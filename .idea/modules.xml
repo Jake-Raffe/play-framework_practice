@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/play-framework_practice.iml" filepath="$PROJECT_DIR$/.idea/modules/play-framework_practice.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/play-template-build.iml" filepath="$PROJECT_DIR$/.idea/modules/play-template-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/play-framework_practice-build.iml" filepath="$PROJECT_DIR$/.idea/modules/play-framework_practice-build.iml" />
     </modules>
   </component>
 </project>

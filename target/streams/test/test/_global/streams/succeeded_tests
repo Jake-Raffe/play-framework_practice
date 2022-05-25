@@ -1,5 +1,6 @@
 #Successful Tests
-#Wed May 25 16:16:45 BST 2022
+#Wed May 25 16:47:30 BST 2022
 services.LibraryServiceSpec=1653340811092
+controllers.HomeControllerSpec=1653493650012
 controllers.ApplicationControllerMockitoSpec=1653340804032
 controllers.ApplicationControllerSpec=1653340810744
