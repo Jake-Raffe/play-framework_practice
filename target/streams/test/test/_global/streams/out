@@ -1,69 +1,323 @@
 [0m[[0m[0mdebug[0m] [0m[0mjavaOptions: Vector()[0m
 [0m[[0m[0mdebug[0m] [0m[0mForking tests - parallelism = false[0m
 [0m[[0m[0mdebug[0m] [0m[0mCreate a single-thread test executor[0m
-[0m[[0m[0mdebug[0m] [0m[0mRunner for org.scalatest.tools.Framework produced 4 initial tasks for 4 tests.[0m
-[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(controllers.ApplicationControllerMockitoSpec, sbt.ForkMain$SubclassFingerscan@f79222e, false, [SuiteSelector])[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mApplicationControllerMockitoSpec:[0m[0m
-[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(controllers.HomeControllerSpec, sbt.ForkMain$SubclassFingerscan@47e409db, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunner for org.scalatest.tools.Framework produced 1 initial tasks for 1 tests.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(controllers.HomeControllerSpec, sbt.ForkMain$SubclassFingerscan@346ca27b, false, [SuiteSelector])[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mHomeControllerSpec:[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mHomeController GET[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[31m- should render the index page from a new instance of controller *** FAILED ***[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  None was not equal to Some("text/html") (HomeControllerSpec.scala:28)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  "[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  <!DOCTYPE html>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  <html lang="en">[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      <head>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m          [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <title>Play Scala API demo</title>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <link rel="stylesheet" media="screen" href="/assets/stylesheets/main.css">[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png">[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      </head>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      <body>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m          [0m
+[0m[[0m[0minfo[0m] [0m[0m          [0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  <div class="container h-100 d-flex justify-content-center">[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m    <div class="jumbotron my-auto">[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      <div class="container mb-5">[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m        <h1 class="display-3 row">Play Scala API Demo</h1>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      </div>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      <p class="lead">[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m        A demo project based off the <a href="https://github.com/miranda-hawkes/induction-tutorials/blob/master/Building-A-RESTful-API-With-Scala-Play/README.md"> Building a RESTful API with Scala and Play </a> tutorial.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      </p>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      <p class="lead mb-5">This project is deployed via Heroku.</p>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      <h3>API Documentation</h3>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      <div class="justify-content-center">[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m        <table class="table">[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <thead>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <th scope="col">URL</th>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <th scope="col">HTTP Method</th>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <th scope="col">Required Header</th>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <th scope="col">Body</th>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          </tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          </thead>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <tbody>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <th scope="row">/api</th>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td><code>GET</code></td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td>None</td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td>N/A</td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          </tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <th scope="row">/api</th>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td><code>POST</code></td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td>Content-Type: application/json</td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td><code>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              "_id" : String[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              <br>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              "name" : String[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              <br>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              "description" : String[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              <br>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              "numSales" : Int[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            </code></td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          </tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <th scope="row">/api/:id</th>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td><code>GET</code></td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td>None</td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td>N/A</td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          </tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <th scope="row">/api/:id</th>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td><code>PUT</code></td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td>Content-Type: application/json</td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td><code>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              "_id" : String[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              <br>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              "name" : String[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              <br>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              "description" : String[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              <br>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              "numSales" : Int[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            </code></td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          </tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <th scope="row">/api/:id</th>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td><code>DELETE</code></td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td>Content-Type: application/json</td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td>N/A</td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          </tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          </tbody>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m        </table>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      </div>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m    </div>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  </div>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m        <script src="/assets/javascripts/main.js" type="text/javascript"></script>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      </body>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  </html>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  " did not include substring "Welcome to Play" (HomeControllerSpec.scala:28)[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[31m- should render the index page from the application *** FAILED ***[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  None was not equal to Some("text/html") (HomeControllerSpec.scala:37)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  "[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  <!DOCTYPE html>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  <html lang="en">[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      <head>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m          [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <title>Play Scala API demo</title>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <link rel="stylesheet" media="screen" href="/assets/stylesheets/main.css">[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png">[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      </head>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      <body>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m          [0m
+[0m[[0m[0minfo[0m] [0m[0m          [0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  <div class="container h-100 d-flex justify-content-center">[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m    <div class="jumbotron my-auto">[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      <div class="container mb-5">[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m        <h1 class="display-3 row">Play Scala API Demo</h1>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      </div>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      <p class="lead">[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m        A demo project based off the <a href="https://github.com/miranda-hawkes/induction-tutorials/blob/master/Building-A-RESTful-API-With-Scala-Play/README.md"> Building a RESTful API with Scala and Play </a> tutorial.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      </p>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      <p class="lead mb-5">This project is deployed via Heroku.</p>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      <h3>API Documentation</h3>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      <div class="justify-content-center">[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m        <table class="table">[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <thead>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <th scope="col">URL</th>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <th scope="col">HTTP Method</th>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <th scope="col">Required Header</th>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <th scope="col">Body</th>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          </tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          </thead>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <tbody>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <th scope="row">/api</th>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td><code>GET</code></td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td>None</td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td>N/A</td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          </tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <th scope="row">/api</th>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td><code>POST</code></td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td>Content-Type: application/json</td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td><code>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              "_id" : String[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              <br>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              "name" : String[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              <br>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              "description" : String[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              <br>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              "numSales" : Int[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            </code></td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          </tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <th scope="row">/api/:id</th>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td><code>GET</code></td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td>None</td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td>N/A</td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          </tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <th scope="row">/api/:id</th>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td><code>PUT</code></td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td>Content-Type: application/json</td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td><code>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              "_id" : String[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              <br>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              "name" : String[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              <br>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              "description" : String[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              <br>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              "numSales" : Int[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            </code></td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          </tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <th scope="row">/api/:id</th>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td><code>DELETE</code></td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td>Content-Type: application/json</td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td>N/A</td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          </tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          </tbody>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m        </table>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      </div>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m    </div>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  </div>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m        <script src="/assets/javascripts/main.js" type="text/javascript"></script>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      </body>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  </html>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  " did not include substring "Welcome to Play" (HomeControllerSpec.scala:37)[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[31m- should render the index page from the router *** FAILED ***[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[31m  400 was not equal to 200 (HomeControllerSpec.scala:45)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  "[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  <!DOCTYPE html>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  <html lang="en">[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      <head>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m          [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <title>Play Scala API demo</title>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <link rel="stylesheet" media="screen" href="/assets/stylesheets/main.css">[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png">[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      </head>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      <body>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m          [0m
+[0m[[0m[0minfo[0m] [0m[0m          [0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  <div class="container h-100 d-flex justify-content-center">[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m    <div class="jumbotron my-auto">[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      <div class="container mb-5">[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m        <h1 class="display-3 row">Play Scala API Demo</h1>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      </div>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      <p class="lead">[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m        A demo project based off the <a href="https://github.com/miranda-hawkes/induction-tutorials/blob/master/Building-A-RESTful-API-With-Scala-Play/README.md"> Building a RESTful API with Scala and Play </a> tutorial.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      </p>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      <p class="lead mb-5">This project is deployed via Heroku.</p>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      <h3>API Documentation</h3>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      <div class="justify-content-center">[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m        <table class="table">[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <thead>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <th scope="col">URL</th>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <th scope="col">HTTP Method</th>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <th scope="col">Required Header</th>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <th scope="col">Body</th>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          </tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          </thead>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <tbody>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <th scope="row">/api</th>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td><code>GET</code></td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td>None</td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td>N/A</td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          </tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <th scope="row">/api</th>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td><code>POST</code></td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td>Content-Type: application/json</td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td><code>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              "_id" : String[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              <br>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              "name" : String[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              <br>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              "description" : String[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              <br>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              "numSales" : Int[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            </code></td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          </tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <th scope="row">/api/:id</th>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td><code>GET</code></td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td>None</td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td>N/A</td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          </tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <th scope="row">/api/:id</th>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td><code>PUT</code></td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td>Content-Type: application/json</td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td><code>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              "_id" : String[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              <br>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              "name" : String[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              <br>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              "description" : String[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              <br>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m              "numSales" : Int[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            </code></td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          </tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          <tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <th scope="row">/api/:id</th>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td><code>DELETE</code></td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td>Content-Type: application/json</td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m            <td>N/A</td>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          </tr>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m          </tbody>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m        </table>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      </div>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m    </div>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  </div>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m        <script src="/assets/javascripts/main.js" type="text/javascript"></script>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m      </body>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  </html>[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m  [0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  " did not include substring "Welcome to Play" (HomeControllerSpec.scala:46)[0m[0m
 [0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 3 events.[0m
-[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(controllers.ApplicationControllerSpec, sbt.ForkMain$SubclassFingerscan@16a023fc, false, [SuiteSelector])[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mApplicationControllerSpec:[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .index[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should return OK[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should load the main page[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .create[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should create a book in the database[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should return an error when a book already exists[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should validate a json body[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should return an error for invalid json[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .read[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should find a book in the database by id[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should find a book in the database by book[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should find all books by author's lastname[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should return an error when a book doesn't exist for a given id[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .update[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should update a book's name by their id[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should return an error when an id doesn't exist[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should return an error when a key doesn't exist[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should update the number of copies available[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .upsert[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should update an existing book[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should create a book when one doesn't exist in[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should return an error for incorrect json[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .delete[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should delete a book by id[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should give an error when no id exists[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .deleteAll[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should return an empty database[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should Optional: return a message when the database was already empty?[0m[0m
-[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 21 events.[0m
-[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(services.LibraryServiceSpec, sbt.ForkMain$SubclassFingerscan@6018dbc3, false, [SuiteSelector])[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mLibraryServiceSpec:[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mgetGoogleBook[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should return a book[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should return an error[0m[0m
-[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 2 events.[0m
 [0m[[0m[0mdebug[0m] [0m[0mRunner for com.novocode.junit.JUnitFramework produced 0 initial tasks for 0 tests.[0m
 [0m[[0m[0minfo[0m] [0m[0mScalaTest[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 11 seconds, 701 milliseconds.[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 26[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 4, aborted 0[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 23, failed 3, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 5 seconds, 203 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 3[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 1, aborted 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 0, failed 3, canceled 0, ignored 0, pending 0[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[31m*** 3 TESTS FAILED ***[0m[0m
 [0m[[0m[0mdebug[0m] [0m[0mSummary for JUnit not available.[0m
-[0m[[0m[31merror[0m] [0m[0mFailed: Total 26, Failed 3, Errors 0, Passed 23[0m
-[0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	controllers.ApplicationControllerSpec[0m
-[0m[[0m[0mdebug[0m] [0m[0m	services.LibraryServiceSpec[0m
-[0m[[0m[0mdebug[0m] [0m[0m	controllers.ApplicationControllerMockitoSpec[0m
+[0m[[0m[31merror[0m] [0m[0mFailed: Total 3, Failed 3, Errors 0, Passed 0[0m
 [0m[[0m[31merror[0m] [0m[0mFailed tests:[0m
 [0m[[0m[31merror[0m] [0m[0m	controllers.HomeControllerSpec[0m
 [0m[[0m[31merror[0m] [0m[0m(Test / [31mtest[0m) sbt.TestsFailedException: Tests unsuccessful[0m

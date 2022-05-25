@@ -1,6 +1,97 @@
-[0m[[0m[33mwarn[0m] [0m[0m/Users/vinniebrice/induction/play-template/test/controllers/ApplicationControllerSpec.scala:96:7: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method beforeEach,[0m
-[0m[[0m[33mwarn[0m] [0m[0mor remove the empty argument list from its definition (Java-defined methods are exempt).[0m
-[0m[[0m[33mwarn[0m] [0m[0mIn Scala 3, an unapplied method like this will be eta-expanded into a function.[0m
-[0m[[0m[33mwarn[0m] [0m[0m      beforeEach[0m
-[0m[[0m[33mwarn[0m] [0m[0m      ^[0m
-[0m[[0m[33mwarn[0m] [0m[0mone warning found[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/baseSpec/BaseSpec.scala:4:12: object scalatest is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.scalatest.concurrent.{Eventually, ScalaFutures}[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/baseSpec/BaseSpec.scala:5:12: object scalatest is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.scalatest.matchers.should.Matchers[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/baseSpec/BaseSpec.scala:6:12: object scalatest is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.scalatest.wordspec.AnyWordSpec[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/baseSpec/BaseSpec.scala:7:12: object scalatest is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach}[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/baseSpec/BaseSpec.scala:8:12: object scalatestplus is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.scalatestplus.play.guice.GuiceOneServerPerSuite[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/baseSpec/BaseSpec.scala:20:24: not found: type AnyWordSpec[0m
+[0m[[0m[31merror[0m] [0m[0mtrait BaseSpec extends AnyWordSpec with Matchers[0m
+[0m[[0m[31merror[0m] [0m[0m                       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/baseSpec/BaseSpec.scala:20:41: not found: type Matchers[0m
+[0m[[0m[31merror[0m] [0m[0mtrait BaseSpec extends AnyWordSpec with Matchers[0m
+[0m[[0m[31merror[0m] [0m[0m                                        ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/baseSpec/BaseSpec.scala:22:53: not found: type GuiceOneServerPerSuite[0m
+[0m[[0m[31merror[0m] [0m[0mtrait BaseSpecWithApplication extends BaseSpec with GuiceOneServerPerSuite with ScalaFutures with BeforeAndAfterEach with BeforeAndAfterAll with Eventually {[0m
+[0m[[0m[31merror[0m] [0m[0m                                                    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/baseSpec/BaseSpec.scala:22:81: not found: type ScalaFutures[0m
+[0m[[0m[31merror[0m] [0m[0mtrait BaseSpecWithApplication extends BaseSpec with GuiceOneServerPerSuite with ScalaFutures with BeforeAndAfterEach with BeforeAndAfterAll with Eventually {[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                                ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/baseSpec/BaseSpec.scala:22:99: not found: type BeforeAndAfterEach[0m
+[0m[[0m[31merror[0m] [0m[0mtrait BaseSpecWithApplication extends BaseSpec with GuiceOneServerPerSuite with ScalaFutures with BeforeAndAfterEach with BeforeAndAfterAll with Eventually {[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                                                  ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/baseSpec/BaseSpec.scala:22:123: not found: type BeforeAndAfterAll[0m
+[0m[[0m[31merror[0m] [0m[0mtrait BaseSpecWithApplication extends BaseSpec with GuiceOneServerPerSuite with ScalaFutures with BeforeAndAfterEach with BeforeAndAfterAll with Eventually {[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                                                                          ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/baseSpec/BaseSpec.scala:22:146: not found: type Eventually[0m
+[0m[[0m[31merror[0m] [0m[0mtrait BaseSpecWithApplication extends BaseSpec with GuiceOneServerPerSuite with ScalaFutures with BeforeAndAfterEach with BeforeAndAfterAll with Eventually {[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                                                                                                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/baseSpec/BaseSpec.scala:24:36: not found: value app[0m
+[0m[[0m[31merror[0m] [0m[0m  implicit val mat: Materializer = app.materializer[0m
+[0m[[0m[31merror[0m] [0m[0m                                   ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/baseSpec/BaseSpec.scala:25:53: not found: value app[0m
+[0m[[0m[31merror[0m] [0m[0m  implicit val executionContext: ExecutionContext = app.injector.instanceOf[ExecutionContext][0m
+[0m[[0m[31merror[0m] [0m[0m                                                    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/baseSpec/BaseSpec.scala:32:30: not found: value app[0m
+[0m[[0m[31merror[0m] [0m[0m  implicit val messagesApi = app.injector.instanceOf[MessagesApi][0m
+[0m[[0m[31merror[0m] [0m[0m                             ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/baseSpec/BaseSpec.scala:33:33: not found: value app[0m
+[0m[[0m[31merror[0m] [0m[0m  lazy val injector: Injector = app.injector[0m
+[0m[[0m[31merror[0m] [0m[0m                                ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/controllers/HomeControllerSpec.scala:4:12: object scalatest is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.scalatest.matchers.must.Matchers.convertToAnyMustWrapper[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/controllers/HomeControllerSpec.scala:5:12: object scalatestplus is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.scalatestplus.play.guice.GuiceOneAppPerSuite[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/controllers/HomeControllerSpec.scala:16:63: not found: type GuiceOneAppPerSuite[0m
+[0m[[0m[31merror[0m] [0m[0mclass HomeControllerSpec extends BaseSpec with Injecting with GuiceOneAppPerSuite {[0m
+[0m[[0m[31merror[0m] [0m[0m                                                              ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/controllers/HomeControllerSpec.scala:20:24: value should is not a member of String[0m
+[0m[[0m[31merror[0m] [0m[0m  "HomeController GET" should {[0m
+[0m[[0m[31merror[0m] [0m[0m                       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/controllers/HomeControllerSpec.scala:22:63: value in is not a member of String[0m
+[0m[[0m[31merror[0m] [0m[0m    "render the index page from a new instance of controller" in {[0m
+[0m[[0m[31merror[0m] [0m[0m                                                              ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/controllers/HomeControllerSpec.scala:26:20: value mustBe is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m      status(home) mustBe OK[0m
+[0m[[0m[31merror[0m] [0m[0m                   ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/controllers/HomeControllerSpec.scala:27:25: value mustBe is not a member of Option[String][0m
+[0m[[0m[31merror[0m] [0m[0m      contentType(home) mustBe Some("text/html")[0m
+[0m[[0m[31merror[0m] [0m[0m                        ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/controllers/HomeControllerSpec.scala:28:29: value must is not a member of String[0m
+[0m[[0m[31merror[0m] [0m[0m      contentAsString(home) must include ("Welcome to Play")[0m
+[0m[[0m[31merror[0m] [0m[0m                            ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/controllers/HomeControllerSpec.scala:28:34: not found: value include[0m
+[0m[[0m[31merror[0m] [0m[0m      contentAsString(home) must include ("Welcome to Play")[0m
+[0m[[0m[31merror[0m] [0m[0m                                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/controllers/HomeControllerSpec.scala:31:50: value in is not a member of String[0m
+[0m[[0m[31merror[0m] [0m[0m    "render the index page from the application" in {[0m
+[0m[[0m[31merror[0m] [0m[0m                                                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/controllers/HomeControllerSpec.scala:35:20: value mustBe is not a member of Int[0m
+[0m[[0m[31merror[0m] [0m[0m      status(home) mustBe OK[0m
+[0m[[0m[31merror[0m] [0m[0m                   ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/controllers/HomeControllerSpec.scala:36:25: value mustBe is not a member of Option[String][0m
+[0m[[0m[31merror[0m] [0m[0m      contentType(home) mustBe Some("text/html")[0m
+[0m[[0m[31merror[0m] [0m[0m                        ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/controllers/HomeControllerSpec.scala:37:29: value must is not a member of String[0m
+[0m[[0m[31merror[0m] [0m[0m      contentAsString(home) must include ("Welcome to Play")[0m
+[0m[[0m[31merror[0m] [0m[0m                            ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/controllers/HomeControllerSpec.scala:37:34: not found: value include[0m
+[0m[[0m[31merror[0m] [0m[0m      contentAsString(home) must include ("Welcome to Play")[0m
+[0m[[0m[31merror[0m] [0m[0m                                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/controllers/HomeControllerSpec.scala:40:45: value in is not a member of String[0m
+[0m[[0m[31merror[0m] [0m[0m    "render the index page from the router" in {[0m
+[0m[[0m[31merror[0m] [0m[0m                                            ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/test/controllers/HomeControllerSpec.scala:42:24: not found: value app[0m
+[0m[[0m[31merror[0m] [0m[0m      val home = route(app, request).get[0m
+[0m[[0m[31merror[0m] [0m[0m                       ^[0m
+[0m[[0m[31merror[0m] [0m[0m32 errors found[0m

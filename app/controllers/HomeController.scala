@@ -22,6 +22,6 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
    * a path of `/`.
    */
   def index(): Action[AnyContent] = Action.async { implicit request: Request[AnyContent] =>
-    Future.successful(Ok)
+    Future.successful(Ok(views.html.index()))
   }
 }
