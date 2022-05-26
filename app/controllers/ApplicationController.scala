@@ -1,7 +1,7 @@
 package controllers
 
-import other.DataRepository
 import play.api.mvc.{BaseController, ControllerComponents}
+import repositories.DataRepository
 
 import javax.inject.{Inject, Singleton}
 

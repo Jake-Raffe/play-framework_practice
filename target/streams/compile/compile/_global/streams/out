@@ -1,17 +1,4 @@
-[0m[[0m[33mwarn[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/conf/routes:7:1: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method index,[0m
-[0m[[0m[33mwarn[0m] [0m[0mor remove the empty argument list from its definition (Java-defined methods are exempt).[0m
-[0m[[0m[33mwarn[0m] [0m[0mIn Scala 3, an unapplied method like this will be eta-expanded into a function.[0m
-[0m[[0m[33mwarn[0m] [0m[0mGET     /api                        controllers.ApplicationController.index[0m
-[0m[[0m[33mwarn[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/conf/routes:9:1: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method create,[0m
-[0m[[0m[33mwarn[0m] [0m[0mor remove the empty argument list from its definition (Java-defined methods are exempt).[0m
-[0m[[0m[33mwarn[0m] [0m[0mIn Scala 3, an unapplied method like this will be eta-expanded into a function.[0m
-[0m[[0m[33mwarn[0m] [0m[0mPOST    /create                     controllers.ApplicationController.create[0m
-[0m[[0m[33mwarn[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/conf/routes:7:1: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method index,[0m
-[0m[[0m[33mwarn[0m] [0m[0mor remove the empty argument list from its definition (Java-defined methods are exempt).[0m
-[0m[[0m[33mwarn[0m] [0m[0mIn Scala 3, an unapplied method like this will be eta-expanded into a function.[0m
-[0m[[0m[33mwarn[0m] [0m[0mGET     /api                        controllers.ApplicationController.index[0m
-[0m[[0m[33mwarn[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/conf/routes:9:1: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method create,[0m
-[0m[[0m[33mwarn[0m] [0m[0mor remove the empty argument list from its definition (Java-defined methods are exempt).[0m
-[0m[[0m[33mwarn[0m] [0m[0mIn Scala 3, an unapplied method like this will be eta-expanded into a function.[0m
-[0m[[0m[33mwarn[0m] [0m[0mPOST    /create                     controllers.ApplicationController.create[0m
-[0m[[0m[33mwarn[0m] [0m[0mfour warnings found[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/app/controllers/ApplicationController.scala:10:103: not found: type Repository[0m
+[0m[[0m[31merror[0m] [0m[0mclass ApplicationController @Inject()(val controllerComponents: ControllerComponents, val repository: Repository) extends BaseController {[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                                                      ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m

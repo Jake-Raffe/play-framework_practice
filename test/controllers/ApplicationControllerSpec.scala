@@ -3,6 +3,8 @@ package controllers
 import baseSpec.BaseSpecWithApplication
 import org.scalatestplus.play.guice.GuiceOneAppPerSuite
 import play.api.test.Injecting
+import play.api.test.FakeRequest
+import play.api.http.Status
 
 class ApplicationControllerSpec extends BaseSpecWithApplication with Injecting with GuiceOneAppPerSuite {
 
@@ -12,7 +14,11 @@ class ApplicationControllerSpec extends BaseSpecWithApplication with Injecting w
   )
 
   "ApplicationController .index()" should {
+    val result = TestApplicationController.index()(FakeRequest())
 
+    "return TODO" in {
+      status(result) shouldBe Status.OK
+    }
   }
 
   "ApplicationController .create()" should {

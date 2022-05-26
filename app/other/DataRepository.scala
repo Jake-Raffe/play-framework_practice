@@ -1,5 +1,0 @@
-package other
-
-class DataRepository {
-
-}
