@@ -25,7 +25,7 @@ trait BaseSpecWithApplication extends BaseSpec with GuiceOneServerPerSuite with 
   implicit val executionContext: ExecutionContext = app.injector.instanceOf[ExecutionContext]
 
   lazy val component: MessagesControllerComponents = injector.instanceOf[MessagesControllerComponents]
-  //lazy val repository: DataRepository = injector.instanceOf[DataRepository]
+  lazy val repository: DataRepository = injector.instanceOf[DataRepository]
   //lazy val service: LibraryService = injector.instanceOf[LibraryService]
   //lazy val connector: LibraryConnector = injector.instanceOf[LibraryConnector]
 
@@ -49,3 +49,4 @@ trait BaseSpecWithApplication extends BaseSpec with GuiceOneServerPerSuite with 
   def buildGet(url: String): FakeRequest[AnyContentAsEmpty.type] =
     FakeRequest(GET, url).withCSRFToken.asInstanceOf[FakeRequest[AnyContentAsEmpty.type]]
 }
+

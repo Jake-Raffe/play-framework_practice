@@ -1,11 +1,13 @@
 package controllers
 
+import other.DataRepository
 import play.api.mvc.{BaseController, ControllerComponents}
 
-import javax.inject.Inject
+import javax.inject.{Inject, Singleton}
 
-//@Singleton
-class ApplicationController @Inject()(val controllerComponents: ControllerComponents) extends BaseController {
+
+@Singleton
+class ApplicationController @Inject()(val controllerComponents: ControllerComponents, val repository: DataRepository) extends BaseController {
 
   def index() = TODO
   def create() = TODO
