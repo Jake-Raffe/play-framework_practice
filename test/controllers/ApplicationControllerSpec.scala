@@ -5,6 +5,7 @@ import org.scalatestplus.play.guice.GuiceOneAppPerSuite
 import play.api.test.Injecting
 import play.api.test.FakeRequest
 import play.api.http.Status
+import play.api.test.Helpers.status
 
 class ApplicationControllerSpec extends BaseSpecWithApplication with Injecting with GuiceOneAppPerSuite {
 
