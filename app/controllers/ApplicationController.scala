@@ -1,10 +1,10 @@
 package controllers
 
 import models.DataModel
+import org.mongodb.scala.result
 import play.api.http.Status.ACCEPTED
-import play.api.libs.json.{JsError, JsSuccess, JsValue, Json}
+import play.api.libs.json.{JsError, JsSuccess, JsValue, Json, Writes}
 import play.api.mvc.{Action, AnyContent, BaseController, ControllerComponents}
-//import play.mvc.BodyParser.Json
 import repositories.DataRepository
 
 import javax.inject.{Inject, Singleton}
@@ -32,13 +32,16 @@ class ApplicationController @Inject()(val controllerComponents: ControllerCompon
 
   def read(id: String): Action[AnyContent] = Action.async { implicit request =>
     val book = dataRepository.read(id)
-    book.map(item => Json.toJson(item)).map(result => Future(Ok(result)))
+    book.map(item => Json.toJson(item)).map(result => Ok(result))
   }
 
   def update(id: String, newData: DataModel): Action[JsValue] = Action.async(parse.json) { implicit request =>
     request.body.validate[DataModel] match {
       case JsSuccess(data, _) =>
-        dataRepository.update(id, data).map(item => Json.toJson(item)).map(data => Accepted(data))
+        dataRepository.update(id, data)
+        dataRepository.read(id) map {
+          case data => Accepted(Json.toJson(DataModel.implicitWrites.writes(data)))
+        }
       case JsError(_) => Future(BadRequest)
     }
   }
@@ -48,6 +51,5 @@ class ApplicationController @Inject()(val controllerComponents: ControllerCompon
       case JsSuccess(_, _) => Future(Accepted)
       case JsError(_) => Future(BadRequest)
     }
-
   }
 }
