@@ -1,1 +1,1 @@
-["controllers.HomeControllerSpec"]
+["controllers.HomeControllerSpec","controllers.ApplicationControllerSpec"]
