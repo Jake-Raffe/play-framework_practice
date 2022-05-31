@@ -36,7 +36,7 @@ class DataRepository @Inject()(
     )
 
   def read(id: String): Future[DataModel] =
-    collection.find(byID(id)).headOption flatMap {
+    collection.find(byID(id)).headOption() flatMap {
       case Some(data) =>
         Future(data)
     }
@@ -48,10 +48,10 @@ class DataRepository @Inject()(
       options = new ReplaceOptions().upsert(true) //What happens when we set this to false?
     ).toFuture()
 
-  def delete(id: String): Future[result.DeleteResult] =
+  def delete(id: String): Future[Long] =
     collection.deleteOne(
       filter = byID(id)
-    ).toFuture()
+    ).toFuture().map(_.getDeletedCount)
 
   def deleteAll(): Future[Unit] = collection.deleteMany(empty()).toFuture().map(_ => ()) //Hint: needed for tests
 

@@ -1,4 +1,16 @@
-[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/app/controllers/ApplicationController.scala:10:103: not found: type Repository[0m
-[0m[[0m[31merror[0m] [0m[0mclass ApplicationController @Inject()(val controllerComponents: ControllerComponents, val repository: Repository) extends BaseController {[0m
-[0m[[0m[31merror[0m] [0m[0m                                                                                                      ^[0m
-[0m[[0m[31merror[0m] [0m[0mone error found[0m
+[0m[[0m[33mwarn[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/app/repositories/DataRepository.scala:39:31: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method headOption,[0m
+[0m[[0m[33mwarn[0m] [0m[0mor remove the empty argument list from its definition (Java-defined methods are exempt).[0m
+[0m[[0m[33mwarn[0m] [0m[0mIn Scala 3, an unapplied method like this will be eta-expanded into a function.[0m
+[0m[[0m[33mwarn[0m] [0m[0m    collection.find(byID(id)).headOption flatMap {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                              ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/app/controllers/ApplicationController.scala:40:16: patterns after a variable pattern cannot match (SLS 8.1.1)[0m
+[0m[[0m[33mwarn[0m] [0m[0m          case result => Accepted(Json.toJson(DataModel.formats.writes(data)))[0m
+[0m[[0m[33mwarn[0m] [0m[0m               ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/app/controllers/ApplicationController.scala:41:21: unreachable code due to variable pattern 'result' on line 40[0m
+[0m[[0m[33mwarn[0m] [0m[0m          case _ => NotFound[0m
+[0m[[0m[33mwarn[0m] [0m[0m                    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/app/repositories/DataRepository.scala:39:50: match may not be exhaustive.[0m
+[0m[[0m[33mwarn[0m] [0m[0mIt would fail on the following input: None[0m
+[0m[[0m[33mwarn[0m] [0m[0m    collection.find(byID(id)).headOption flatMap {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                 ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mfour warnings found[0m

@@ -1,7 +1,6 @@
 package controllers
 
-
-import play.api.mvc._
+import play.api.mvc.{BaseController, ControllerComponents, Action, Request, AnyContent}
 
 import javax.inject._
 import scala.concurrent.Future

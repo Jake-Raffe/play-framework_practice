@@ -1,11 +1,9 @@
 package controllers
 
 import models.DataModel
-import org.mongodb.scala.result
-import play.api.http.Status.ACCEPTED
-import play.api.libs.json.{JsError, JsSuccess, JsValue, Json, Writes}
-import play.api.mvc.{Action, AnyContent, BaseController, ControllerComponents}
+import play.api.libs.json.{JsError, JsSuccess, JsValue, Json}
 import repositories.DataRepository
+import play.api.mvc._
 
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
@@ -35,21 +33,21 @@ class ApplicationController @Inject()(val controllerComponents: ControllerCompon
     book.map(item => Json.toJson(item)).map(result => Ok(result))
   }
 
-  def update(id: String, newData: DataModel): Action[JsValue] = Action.async(parse.json) { implicit request =>
+  def update(id: String): Action[JsValue] = Action.async(parse.json) { implicit request =>
     request.body.validate[DataModel] match {
       case JsSuccess(data, _) =>
-        dataRepository.update(id, data)
-        dataRepository.read(id) map {
-          case data => Accepted(Json.toJson(DataModel.implicitWrites.writes(data)))
+        dataRepository.update(id, data).map {
+          case result => Accepted(Json.toJson(data))
+          case _ => NotFound
         }
       case JsError(_) => Future(BadRequest)
     }
   }
 
   def delete(id: String): Action[AnyContent] = Action.async { implicit request =>
-    dataRepository.delete(id) match {
-      case JsSuccess(_, _) => Future(Accepted)
-      case JsError(_) => Future(BadRequest)
+    dataRepository.delete(id).map {
+      case 1 => Accepted
+      case _ => BadRequest
     }
   }
 }
