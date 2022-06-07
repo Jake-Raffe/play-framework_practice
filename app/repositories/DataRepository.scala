@@ -24,6 +24,8 @@ class DataRepository @Inject()(
   replaceIndexes = false
 ) {
 
+  val emptyData = new DataModel("empty", "", "", 0)
+
   def create(book: DataModel): Future[DataModel] =
     collection
       .insertOne(book)
@@ -37,8 +39,7 @@ class DataRepository @Inject()(
 
   def read(id: String): Future[DataModel] =
     collection.find(byID(id)).headOption() flatMap {
-      case Some(data) =>
-        Future(data)
+      case Some(data) => Future(data)
     }
 
   def update(id: String, book: DataModel): Future[result.UpdateResult] =

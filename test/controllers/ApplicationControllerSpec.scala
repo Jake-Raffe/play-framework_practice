@@ -16,6 +16,7 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
   val TestApplicationController = new ApplicationController(
     component,
     repository,
+    applicationService,
     executionContext
   )
 
@@ -33,7 +34,6 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
   )
 
   "ApplicationController .index()" should {
-
     val result = TestApplicationController.index()(FakeRequest())
     "return status OK" in {
       status(result)(defaultAwaitTimeout) shouldBe Status.OK
@@ -41,52 +41,67 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
   }
 
   "ApplicationController .create()" should {
+    val request: FakeRequest[JsValue] = buildPost("/api").withBody[JsValue](Json.toJson(dataModel))
+    val emptyRequest: FakeRequest[JsValue] = buildPost("/api").withBody[JsValue](Json.obj())
+    val createdResult: Future[Result] = TestApplicationController.create()(request)
+    val createdEmptyResult: Future[Result] = TestApplicationController.create()(emptyRequest)
     "create a book in the database" in {
-      val request: FakeRequest[JsValue] = buildPost("/api").withBody[JsValue](Json.toJson(dataModel))
-      val createdResult: Future[Result] = TestApplicationController.create()(request)
       status(createdResult)(defaultAwaitTimeout) shouldBe Status.CREATED
+    }
+    "return BadRequest if request body is of wrong format" in {
+      status(createdEmptyResult)(defaultAwaitTimeout) shouldBe Status.BAD_REQUEST
     }
   }
 
   "ApplicationController .read(id: String)" should {
+    val request: FakeRequest[JsValue] = buildPost("/api").withBody[JsValue](Json.toJson(dataModel))
+    val createdResult: Future[Result] = TestApplicationController.create()(request)
+    val readRequest: FakeRequest[AnyContentAsEmpty.type] = buildGet("/api/:id")
+    val readResult: Future[Result] = TestApplicationController.read("abcd")(readRequest)
+    val readWrongIDResult: Future[Result] = TestApplicationController.read("asdhgahdgakdg")(readRequest)
     "find a book in the database by id" in {
-      val request: FakeRequest[JsValue] = buildPost("/api").withBody[JsValue](Json.toJson(dataModel))
-      val createdResult: Future[Result] = TestApplicationController.create()(request)
-      status(createdResult)(defaultAwaitTimeout) shouldBe Status.CREATED
-      val readRequest: FakeRequest[AnyContentAsEmpty.type] = buildGet("/api/:id")
-      val readResult: Future[Result] = TestApplicationController.read("abcd")(readRequest)
       status(readResult)(defaultAwaitTimeout) shouldBe Status.OK
       contentAsJson(readResult)(defaultAwaitTimeout).as[JsValue] shouldBe Json.toJson(dataModel)
+    }
+    "return a BadRequest if a book of the ID is not found" in {
+      status(readWrongIDResult)(defaultAwaitTimeout) shouldBe Status.BAD_REQUEST
     }
   }
 
   "ApplicationController .update(id: String, newData: DataModel)" should {
-    "find a book in the database by it's ID and replace it with the new book" in {
       val request: FakeRequest[JsValue] = buildPost("/api").withBody[JsValue](Json.toJson(dataModel))
       val createdResult: Future[Result] = TestApplicationController.create()(request)
-      status(createdResult)(defaultAwaitTimeout) shouldBe Status.CREATED
+    "find a book in the database by it's ID and replace it with the new book" in {
       val updateRequest: FakeRequest[JsValue] = buildPut("/api/:id").withBody[JsValue](Json.toJson(updatedDataModel))
       val updateResult: Future[Result] = TestApplicationController.update("abcd")(updateRequest)
       status(updateResult)(defaultAwaitTimeout) shouldBe Status.ACCEPTED
       contentAsJson(updateResult)(defaultAwaitTimeout).as[JsValue] shouldBe Json.toJson(updatedDataModel)
     }
+    "return NotFound message if wrong ID" in {
+      val updateRequest: FakeRequest[JsValue] = buildPut("/api/:id").withBody[JsValue](Json.toJson(updatedDataModel))
+      val updateWrongIDResult: Future[Result] = TestApplicationController.update("125")(updateRequest)
+      status(updateWrongIDResult)(defaultAwaitTimeout) shouldBe Status.NOT_FOUND
+    }
+    "return Bad_Request if incorrect Json body" in {
+      val emptyRequest: FakeRequest[JsValue] = buildPost("/api").withBody[JsValue](Json.obj())
+      val createdEmptyResult: Future[Result] = TestApplicationController.create()(emptyRequest)
+      status(createdEmptyResult)(defaultAwaitTimeout) shouldBe Status.BAD_REQUEST
+    }
   }
 
   "ApplicationController .delete(id: String)" should {
-    "find a book in the database by id and delete it" in {
       val request: FakeRequest[JsValue] = buildPost("/api").withBody[JsValue](Json.toJson(dataModel))
       val createdResult: Future[Result] = TestApplicationController.create()(request)
-      status(createdResult)(defaultAwaitTimeout) shouldBe Status.CREATED
+    "find a book in the database by id and delete it" in {
       val deleteRequest: FakeRequest[AnyContentAsEmpty.type] = buildDelete("/api/:id")
       val deleteResult: Future[Result] = TestApplicationController.delete("abcd")(deleteRequest)
       status(deleteResult)(defaultAwaitTimeout) shouldBe Status.ACCEPTED
     }
-//    "return a Bad Request if the id does not exist" in {
-//      beforeEach()
-//      val readEmptyRequest: FakeRequest[AnyContentAsEmpty.type] = buildGet("/read/:id")
-//      val readEmptyResult: Future[Result] = TestApplicationController.read("5")(readEmptyRequest)
-//      status(readEmptyResult) shouldBe Status.BAD_REQUEST
-//    }
+    "return a Bad Request if the id does not exist" in {
+      val readEmptyRequest: FakeRequest[AnyContentAsEmpty.type] = buildGet("/read/:id")
+      val readEmptyResult: Future[Result] = TestApplicationController.read("5")(readEmptyRequest)
+      status(readEmptyResult) shouldBe None
+    }
   }
 
   override def beforeEach(): Unit = repository.deleteAll()
