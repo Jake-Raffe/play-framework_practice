@@ -40,19 +40,18 @@ class DataRepository @Inject()(
   def read(id: String): Future[DataModel] =
     collection.find(byID(id)).headOption() flatMap {
       case Some(data) => Future(data)
+      case _ => Future(emptyData)
     }
 
   def update(id: String, book: DataModel): Future[result.UpdateResult] =
     collection.replaceOne(
       filter = byID(id),
       replacement = book,
-      options = new ReplaceOptions().upsert(true) //What happens when we set this to false?
+      options = new ReplaceOptions().upsert(false) //What happens when we set this to false?
     ).toFuture()
 
   def delete(id: String): Future[Long] =
-    collection.deleteOne(
-      filter = byID(id)
-    ).toFuture().map(_.getDeletedCount)
+    collection.deleteOne(filter = byID(id)).toFuture().map(_.getDeletedCount)
 
   def deleteAll(): Future[Unit] = collection.deleteMany(empty()).toFuture().map(_ => ()) //Hint: needed for tests
 

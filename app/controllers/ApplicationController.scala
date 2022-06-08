@@ -29,22 +29,27 @@ class ApplicationController @Inject()(val controllerComponents: ControllerCompon
   def create(): Action[JsValue] = Action.async(parse.json) { implicit request =>
     request.body.validate[DataModel] match {
       case JsSuccess(dataModel, _) =>
-        dataRepository.create(dataModel).map(_ => Created)
+        dataRepository.create(dataModel).map(result => Created(Json.toJson(result)))
       case JsError(_) => Future(BadRequest)
     }
   }
 
   def read(id: String): Action[AnyContent] = Action.async { implicit request =>
-    val book = dataRepository.read(id)
-    book.map(item => Json.toJson(item)).map(result => Ok(result))
+    dataRepository.read(id).map {
+      case dataModel if dataModel._id.equals("empty") => BadRequest
+      case dataModel => Ok(Json.toJson(dataModel))
+      case _ => BadRequest("Unknown error")
+    }
   }
 
   def update(id: String): Action[JsValue] = Action.async(parse.json) { implicit request =>
     request.body.validate[DataModel] match {
       case JsSuccess(data, _) =>
         dataRepository.update(id, data).map {
-          case result => Accepted(Json.toJson(data))
-          case _ => NotFound
+          case result if result.getModifiedCount.equals(0l) =>
+            dataRepository.read(id).map(foo => println(s"bad $foo"))
+            BadRequest
+          case result => {println("good" + result.getModifiedCount.equals(0l)); Accepted(Json.toJson(data))}
         }
       case JsError(_) => Future(BadRequest)
     }

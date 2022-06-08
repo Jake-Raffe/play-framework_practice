@@ -7,8 +7,12 @@ import org.scalatest.concurrent.ScalaFutures
 import org.scalatestplus.play.guice.GuiceOneAppPerSuite
 import play.api.libs.json.{JsValue, Json, OFormat}
 import play.api.http.Status
-
 import scala.concurrent.{ExecutionContext, Future}
+import models.DataModel
+import play.api.test.{FakeRequest, Injecting}
+import play.api.mvc.{Action, AnyContentAsEmpty, Result}
+import play.api.test.Helpers.{contentAsJson, defaultAwaitTimeout, status}
+
 
 class LibraryServiceSpec extends BaseSpec with MockFactory with ScalaFutures with GuiceOneAppPerSuite {
 
@@ -26,25 +30,23 @@ class LibraryServiceSpec extends BaseSpec with MockFactory with ScalaFutures wit
   "getGoogleBook" should {
     val url: String = "testUrl"
 
-    "return a book" in {
-      (mockConnector.get[Response](_: String)(_: OFormat[Response], _: ExecutionContext))
-        .expects(url, *, *)
-        .returning(Future(gameOfThrones.as[JsValue]))
-        .once()
-      whenReady(testService.getGoogleBook(urlOverride = Some(url), search = "", term = "")) { result =>
-        result shouldBe gameOfThrones
-      }
+//    "return a book" in {
+//      (mockConnector.get[Response](_: String)(_: OFormat[Response], _: ExecutionContext))
+//        .expects(url, *, *)
+//        .returning(Future(gameOfThrones.as[JsValue]))
+//        .once()
+//      whenReady(testService.getGoogleBook(urlOverride = Some(url), search = "", term = "")) { result =>
+//        result shouldBe gameOfThrones
+//      }
+//    }
+//    "return an error" in {
+//      (mockConnector.get[Response](_: String)(_: OFormat[Response], _: ExecutionContext))
+//        .expects(url, *, *)
+//        .returning(Future(Status.NOT_FOUND))
+//        .once()
+//      whenReady(testService.getGoogleBook(urlOverride = Some(url), search = "", term = "")) { result =>
+//        result shouldBe Status.NOT_FOUND
+//      }
+//    }
     }
-
-    "return an error" in {
-      (mockConnector.get[Response](_: String)(_: OFormat[Response], _: ExecutionContext))
-        .expects(url, *, *)
-        .returning(Future(Status.NOT_FOUND))
-        .once()
-      whenReady(testService.getGoogleBook(urlOverride = Some(url), search = "", term = "")) { result =>
-        result shouldBe Status.NOT_FOUND
-      }
-    }
-    }
-  }
 }

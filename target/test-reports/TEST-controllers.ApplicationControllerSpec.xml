@@ -1,19 +1,184 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<testsuite hostname="Jacobs-MacBook-Pro-5.local" name="controllers.ApplicationControllerSpec" tests="5" errors="0" failures="0" skipped="0" time="0.095" timestamp="2022-05-31T15:40:03">
+<testsuite hostname="Jacobs-MBP-5" name="controllers.ApplicationControllerSpec" tests="10" errors="0" failures="4" skipped="0" time="0.173" timestamp="2022-06-08T11:02:12">
                      <properties>
       <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/><property name="java.specification.version" value="11"/><property name="sun.cpu.isalist" value=""/><property name="sun.jnu.encoding" value="UTF-8"/><property name="sun.arch.data.model" value="64"/><property name="java.vendor.url" value="http://java.oracle.com/"/><property name="sun.boot.library.path" value="/Users/jacob.raffe/Library/Caches/Coursier/arc/https/github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11%252B28/OpenJDK11-jdk_x64_mac_hotspot_11_28.tar.gz/jdk-11+28/Contents/Home/lib"/><property name="sun.java.command" value="/opt/homebrew/Cellar/sbt/1.6.2/libexec/bin/sbt-launch.jar test"/><property name="jdk.debug" value="release"/><property name="java.specification.vendor" value="Oracle Corporation"/><property name="java.version.date" value="2018-09-25"/><property name="java.home" value="/Users/jacob.raffe/Library/Caches/Coursier/arc/https/github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11%252B28/OpenJDK11-jdk_x64_mac_hotspot_11_28.tar.gz/jdk-11+28/Contents/Home"/><property name="file.separator" value="/"/><property name="java.vm.compressedOopsMode" value="Zero based"/><property name="line.separator" value="
 "/><property name="java.specification.name" value="Java Platform API Specification"/><property name="java.vm.specification.vendor" value="Oracle Corporation"/><property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/><property name="java.runtime.version" value="11+28"/><property name="user.name" value="jacob.raffe"/><property name="log4j.ignoreTCL" value="true"/><property name="file.encoding" value="UTF-8"/><property name="java.vendor.version" value="AdoptOpenJDK"/><property name="java.io.tmpdir" value="/var/folders/dj/c1byr_n93170lt43nr6ptr580000gn/T/"/><property name="java.version" value="11"/><property name="java.vm.specification.name" value="Java Virtual Machine Specification"/><property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/><property name="sun.os.patch.level" value="unknown"/><property name="java.library.path" value="/Users/jacob.raffe/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/><property name="java.vendor" value="Oracle Corporation"/><property name="scala.ext.dirs" value="/Users/jacob.raffe/.sbt/1.0/java9-rt-ext-oracle_corporation_11"/><property name="sun.io.unicode.encoding" value="UnicodeBig"/><property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/><property name="gopherProxySet" value="false"/><property name="java.class.path" value="/opt/homebrew/Cellar/sbt/1.6.2/libexec/bin/sbt-launch.jar"/><property name="java.vm.vendor" value="Oracle Corporation"/><property name="jline.shutdownhook" value="false"/><property name="user.timezone" value="Europe/London"/><property name="os.name" value="Mac OS X"/><property name="java.vm.specification.version" value="11"/><property name="sun.java.launcher" value="SUN_STANDARD"/><property name="user.country" value="GB"/><property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/><property name="sun.cpu.endian" value="little"/><property name="user.home" value="/Users/jacob.raffe"/><property name="user.language" value="en"/><property name="sbt.script" value="/opt/homebrew/Cellar/sbt/1.6.2/libexec/bin/sbt"/><property name="swoval.tmpdir" value="/Users/jacob.raffe/.sbt/1.0"/><property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/><property name="jline.esc.timeout" value="0"/><property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/><property name="path.separator" value=":"/><property name="os.version" value="10.16"/><property name="jna.nosys" value="true"/><property name="java.runtime.name" value="OpenJDK Runtime Environment"/><property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/><property name="java.vendor.url.bug" value="http://bugreport.java.com/bugreport/"/><property name="user.dir" value="/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template"/><property name="os.arch" value="x86_64"/><property name="java.vm.info" value="mixed mode"/><property name="java.vm.version" value="11+28"/><property name="java.class.version" value="55.0"/>
     </properties>
-                     <testcase classname="controllers.ApplicationControllerSpec" name="ApplicationController .index() should return status OK" time="0.004">
+                     <testcase classname="controllers.ApplicationControllerSpec" name="ApplicationController .index() should return status OK" time="0.002">
                                                  
-                                               </testcase><testcase classname="controllers.ApplicationControllerSpec" name="ApplicationController .create() should create a book in the database" time="0.032">
+                                               </testcase><testcase classname="controllers.ApplicationControllerSpec" name="ApplicationController .create() should create a book in the database" time="0.001">
                                                  
-                                               </testcase><testcase classname="controllers.ApplicationControllerSpec" name="ApplicationController .read(id: String) should find a book in the database by id" time="0.03">
+                                               </testcase><testcase classname="controllers.ApplicationControllerSpec" name="ApplicationController .create() should return BadRequest if request body is of wrong format" time="0.001">
                                                  
-                                               </testcase><testcase classname="controllers.ApplicationControllerSpec" name="ApplicationController .update(id: String, newData: DataModel) should find a book in the database by it's ID and replace it with the new book" time="0.019">
+                                               </testcase><testcase classname="controllers.ApplicationControllerSpec" name="ApplicationController .read(id: String) should find a book in the database by id" time="0.014">
                                                  
-                                               </testcase><testcase classname="controllers.ApplicationControllerSpec" name="ApplicationController .delete(id: String) should find a book in the database by id and delete it" time="0.01">
+                                               </testcase><testcase classname="controllers.ApplicationControllerSpec" name="ApplicationController .read(id: String) should return a BadRequest if a book of the ID is not found" time="0.003">
+                                                 <failure message="scala.MatchError: None (of class scala.None$)" type="sbt.ForkMain$ForkError">sbt.ForkMain$ForkError: scala.MatchError: None (of class scala.None$)
+	at repositories.DataRepository.$anonfun$read$1(DataRepository.scala:41)
+	at scala.concurrent.impl.Promise$Transformation.run(Promise.scala:470)
+	at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:63)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.$anonfun$run$1(BatchingExecutor.scala:100)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:94)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:100)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:49)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(ForkJoinExecutorConfigurator.scala:48)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1020)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1656)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1594)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:177)
+</failure>
+                                               </testcase><testcase classname="controllers.ApplicationControllerSpec" name="ApplicationController .update(id: String, newData: DataModel) should find a book in the database by it's ID and replace it with the new book" time="0.042">
                                                  
+                                               </testcase><testcase classname="controllers.ApplicationControllerSpec" name="ApplicationController .update(id: String, newData: DataModel) should return NotFound message if wrong ID" time="0.015">
+                                                 <failure message="com.mongodb.MongoWriteException: Write operation error on server localhost:27017. Write error: WriteError{code=66, message='After applying the update, the (immutable) field '_id' was found to have been altered to _id: &quot;abcd&quot;', details={}}." type="sbt.ForkMain$ForkError">sbt.ForkMain$ForkError: com.mongodb.MongoWriteException: Write operation error on server localhost:27017. Write error: WriteError{code=66, message='After applying the update, the (immutable) field '_id' was found to have been altered to _id: &quot;abcd&quot;', details={}}.
+	at com.mongodb.reactivestreams.client.internal.MongoOperationPublisher.lambda$createSingleWriteRequestMono$24(MongoOperationPublisher.java:490)
+	at reactor.core.publisher.Mono.lambda$onErrorMap$23(Mono.java:3084)
+	at reactor.core.publisher.Mono.lambda$onErrorResume$25(Mono.java:3174)
+	at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:88)
+	at reactor.core.publisher.MonoNext$NextSubscriber.onError(MonoNext.java:87)
+	at reactor.core.publisher.MonoFlatMap$FlatMapMain.secondError(MonoFlatMap.java:185)
+	at reactor.core.publisher.MonoFlatMap$FlatMapInner.onError(MonoFlatMap.java:251)
+	at reactor.core.publisher.FluxPeek$PeekSubscriber.onError(FluxPeek.java:214)
+	at reactor.core.publisher.MonoCreate$DefaultMonoSink.error(MonoCreate.java:185)
+	at com.mongodb.reactivestreams.client.internal.MongoOperationPublisher.lambda$sinkToCallback$30(MongoOperationPublisher.java:545)
+	at com.mongodb.reactivestreams.client.internal.OperationExecutorImpl.lambda$execute$9(OperationExecutorImpl.java:124)
+	at com.mongodb.internal.async.ErrorHandlingResultCallback.onResult(ErrorHandlingResultCallback.java:48)
+	at com.mongodb.internal.operation.CommandOperationHelper.lambda$exceptionTransformingCallback$23(CommandOperationHelper.java:627)
+	at com.mongodb.internal.async.function.AsyncCallbackSupplier.lambda$whenComplete$1(AsyncCallbackSupplier.java:95)
+	at com.mongodb.internal.async.function.RetryingAsyncCallbackSupplier$RetryingCallback.onResult(RetryingAsyncCallbackSupplier.java:109)
+	at com.mongodb.internal.async.ErrorHandlingResultCallback.onResult(ErrorHandlingResultCallback.java:48)
+	at com.mongodb.internal.async.function.AsyncCallbackSupplier.lambda$whenComplete$1(AsyncCallbackSupplier.java:95)
+	at com.mongodb.internal.async.ErrorHandlingResultCallback.onResult(ErrorHandlingResultCallback.java:48)
+	at com.mongodb.internal.async.function.AsyncCallbackSupplier.lambda$whenComplete$1(AsyncCallbackSupplier.java:95)
+	at com.mongodb.internal.operation.MixedBulkWriteOperation.lambda$executeBulkWriteBatchAsync$11(MixedBulkWriteOperation.java:424)
+	at com.mongodb.internal.async.function.AsyncCallbackLoop$LoopingCallback.onResult(AsyncCallbackLoop.java:84)
+	at com.mongodb.internal.async.function.AsyncCallbackLoop$LoopingCallback.onResult(AsyncCallbackLoop.java:61)
+	at com.mongodb.internal.async.function.LoopState.breakAndCompleteIf(LoopState.java:111)
+	at com.mongodb.internal.operation.MixedBulkWriteOperation.lambda$executeBulkWriteBatchAsync$10(MixedBulkWriteOperation.java:378)
+	at com.mongodb.internal.async.function.AsyncCallbackLoop$LoopingCallback.onResult(AsyncCallbackLoop.java:82)
+	at com.mongodb.internal.async.function.AsyncCallbackLoop$LoopingCallback.onResult(AsyncCallbackLoop.java:61)
+	at com.mongodb.internal.operation.MixedBulkWriteOperation.lambda$executeBulkWriteBatchAsync$9(MixedBulkWriteOperation.java:400)
+	at com.mongodb.internal.async.ErrorHandlingResultCallback.onResult(ErrorHandlingResultCallback.java:48)
+	at com.mongodb.internal.connection.DefaultServer$DefaultServerProtocolExecutor$2.onResult(DefaultServer.java:276)
+	at com.mongodb.internal.async.ErrorHandlingResultCallback.onResult(ErrorHandlingResultCallback.java:48)
+	at com.mongodb.internal.connection.CommandProtocolImpl$1.onResult(CommandProtocolImpl.java:84)
+	at com.mongodb.internal.connection.DefaultConnectionPool$PooledConnection$1.onResult(DefaultConnectionPool.java:683)
+	at com.mongodb.internal.connection.UsageTrackingInternalConnection$2.onResult(UsageTrackingInternalConnection.java:159)
+	at com.mongodb.internal.async.ErrorHandlingResultCallback.onResult(ErrorHandlingResultCallback.java:48)
+	at com.mongodb.internal.connection.InternalStreamConnection$2$1.onResult(InternalStreamConnection.java:526)
+	at com.mongodb.internal.connection.InternalStreamConnection$2$1.onResult(InternalStreamConnection.java:503)
+	at com.mongodb.internal.connection.InternalStreamConnection$MessageHeaderCallback$MessageCallback.onResult(InternalStreamConnection.java:815)
+	at com.mongodb.internal.connection.InternalStreamConnection$MessageHeaderCallback$MessageCallback.onResult(InternalStreamConnection.java:782)
+	at com.mongodb.internal.connection.InternalStreamConnection$5.completed(InternalStreamConnection.java:650)
+	at com.mongodb.internal.connection.InternalStreamConnection$5.completed(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.AsynchronousChannelStream$BasicCompletionHandler.completed(AsynchronousChannelStream.java:250)
+	at com.mongodb.internal.connection.AsynchronousChannelStream$BasicCompletionHandler.completed(AsynchronousChannelStream.java:233)
+	at java.base/sun.nio.ch.Invoker.invokeUnchecked(Invoker.java:127)
+	at java.base/sun.nio.ch.Invoker.invokeDirect(Invoker.java:158)
+	at java.base/sun.nio.ch.UnixAsynchronousSocketChannelImpl.implRead(UnixAsynchronousSocketChannelImpl.java:560)
+	at java.base/sun.nio.ch.AsynchronousSocketChannelImpl.read(AsynchronousSocketChannelImpl.java:277)
+	at java.base/sun.nio.ch.AsynchronousSocketChannelImpl.read(AsynchronousSocketChannelImpl.java:298)
+	at com.mongodb.internal.connection.AsynchronousSocketChannelStream$AsynchronousSocketChannelAdapter.read(AsynchronousSocketChannelStream.java:144)
+	at com.mongodb.internal.connection.AsynchronousChannelStream.readAsync(AsynchronousChannelStream.java:118)
+	at com.mongodb.internal.connection.AsynchronousChannelStream.readAsync(AsynchronousChannelStream.java:107)
+	at com.mongodb.internal.connection.InternalStreamConnection.readAsync(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.InternalStreamConnection.access$600(InternalStreamConnection.java:86)
+	at com.mongodb.internal.connection.InternalStreamConnection$MessageHeaderCallback.onResult(InternalStreamConnection.java:772)
+	at com.mongodb.internal.connection.InternalStreamConnection$MessageHeaderCallback.onResult(InternalStreamConnection.java:757)
+	at com.mongodb.internal.connection.InternalStreamConnection$5.completed(InternalStreamConnection.java:650)
+	at com.mongodb.internal.connection.InternalStreamConnection$5.completed(InternalStreamConnection.java:647)
+	at com.mongodb.internal.connection.AsynchronousChannelStream$BasicCompletionHandler.completed(AsynchronousChannelStream.java:250)
+	at com.mongodb.internal.connection.AsynchronousChannelStream$BasicCompletionHandler.completed(AsynchronousChannelStream.java:233)
+	at java.base/sun.nio.ch.Invoker.invokeUnchecked(Invoker.java:127)
+	at java.base/sun.nio.ch.UnixAsynchronousSocketChannelImpl.finishRead(UnixAsynchronousSocketChannelImpl.java:437)
+	at java.base/sun.nio.ch.UnixAsynchronousSocketChannelImpl.finish(UnixAsynchronousSocketChannelImpl.java:191)
+	at java.base/sun.nio.ch.UnixAsynchronousSocketChannelImpl.onEvent(UnixAsynchronousSocketChannelImpl.java:213)
+	at java.base/sun.nio.ch.KQueuePort$EventHandlerTask.run(KQueuePort.java:312)
+	at java.base/sun.nio.ch.AsynchronousChannelGroupImpl$1.run(AsynchronousChannelGroupImpl.java:112)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+</failure>
+                                               </testcase><testcase classname="controllers.ApplicationControllerSpec" name="ApplicationController .update(id: String, newData: DataModel) should return Bad_Request if incorrect Json body" time="0.022">
+                                                 
+                                               </testcase><testcase classname="controllers.ApplicationControllerSpec" name="ApplicationController .delete(id: String) should find a book in the database by id and delete it" time="0.056">
+                                                 <failure message="org.scalatest.exceptions.TestFailedException: 400 was not equal to 202" type="sbt.ForkMain$ForkError">sbt.ForkMain$ForkError: org.scalatest.exceptions.TestFailedException: 400 was not equal to 202
+	at org.scalatest.matchers.MatchersHelper$.indicateFailure(MatchersHelper.scala:392)
+	at org.scalatest.matchers.should.Matchers$AnyShouldWrapper.shouldBe(Matchers.scala:7021)
+	at controllers.ApplicationControllerSpec.$anonfun$new$14(ApplicationControllerSpec.scala:98)
+	at org.scalatest.OutcomeOf.outcomeOf(OutcomeOf.scala:85)
+	at org.scalatest.OutcomeOf.outcomeOf$(OutcomeOf.scala:83)
+	at org.scalatest.OutcomeOf$.outcomeOf(OutcomeOf.scala:104)
+	at org.scalatest.Transformer.apply(Transformer.scala:22)
+	at org.scalatest.Transformer.apply(Transformer.scala:20)
+	at org.scalatest.wordspec.AnyWordSpecLike$$anon$3.apply(AnyWordSpecLike.scala:1227)
+	at org.scalatest.TestSuite.withFixture(TestSuite.scala:196)
+	at org.scalatest.TestSuite.withFixture$(TestSuite.scala:195)
+	at org.scalatest.wordspec.AnyWordSpec.withFixture(AnyWordSpec.scala:1879)
+	at org.scalatest.wordspec.AnyWordSpecLike.invokeWithFixture$1(AnyWordSpecLike.scala:1225)
+	at org.scalatest.wordspec.AnyWordSpecLike.$anonfun$runTest$1(AnyWordSpecLike.scala:1237)
+	at org.scalatest.SuperEngine.runTestImpl(Engine.scala:306)
+	at org.scalatest.wordspec.AnyWordSpecLike.runTest(AnyWordSpecLike.scala:1237)
+	at org.scalatest.wordspec.AnyWordSpecLike.runTest$(AnyWordSpecLike.scala:1219)
+	at controllers.ApplicationControllerSpec.org$scalatest$BeforeAndAfterEach$$super$runTest(ApplicationControllerSpec.scala:13)
+	at org.scalatest.BeforeAndAfterEach.runTest(BeforeAndAfterEach.scala:234)
+	at org.scalatest.BeforeAndAfterEach.runTest$(BeforeAndAfterEach.scala:227)
+	at controllers.ApplicationControllerSpec.runTest(ApplicationControllerSpec.scala:13)
+	at org.scalatest.wordspec.AnyWordSpecLike.$anonfun$runTests$1(AnyWordSpecLike.scala:1296)
+	at org.scalatest.SuperEngine.$anonfun$runTestsInBranch$1(Engine.scala:413)
+	at scala.collection.immutable.List.foreach(List.scala:333)
+	at org.scalatest.SuperEngine.traverseSubNodes$1(Engine.scala:401)
+	at org.scalatest.SuperEngine.runTestsInBranch(Engine.scala:390)
+	at org.scalatest.SuperEngine.$anonfun$runTestsInBranch$1(Engine.scala:427)
+	at scala.collection.immutable.List.foreach(List.scala:333)
+	at org.scalatest.SuperEngine.traverseSubNodes$1(Engine.scala:401)
+	at org.scalatest.SuperEngine.runTestsInBranch(Engine.scala:396)
+	at org.scalatest.SuperEngine.runTestsImpl(Engine.scala:475)
+	at org.scalatest.wordspec.AnyWordSpecLike.runTests(AnyWordSpecLike.scala:1296)
+	at org.scalatest.wordspec.AnyWordSpecLike.runTests$(AnyWordSpecLike.scala:1295)
+	at org.scalatest.wordspec.AnyWordSpec.runTests(AnyWordSpec.scala:1879)
+	at org.scalatest.Suite.run(Suite.scala:1114)
+	at org.scalatest.Suite.run$(Suite.scala:1096)
+	at org.scalatest.wordspec.AnyWordSpec.org$scalatest$wordspec$AnyWordSpecLike$$super$run(AnyWordSpec.scala:1879)
+	at org.scalatest.wordspec.AnyWordSpecLike.$anonfun$run$1(AnyWordSpecLike.scala:1341)
+	at org.scalatest.SuperEngine.runImpl(Engine.scala:535)
+	at org.scalatest.wordspec.AnyWordSpecLike.run(AnyWordSpecLike.scala:1341)
+	at org.scalatest.wordspec.AnyWordSpecLike.run$(AnyWordSpecLike.scala:1339)
+	at controllers.ApplicationControllerSpec.org$scalatestplus$play$BaseOneServerPerSuite$$super$run(ApplicationControllerSpec.scala:13)
+	at org.scalatestplus.play.BaseOneServerPerSuite.run(BaseOneServerPerSuite.scala:163)
+	at org.scalatestplus.play.BaseOneServerPerSuite.run$(BaseOneServerPerSuite.scala:159)
+	at controllers.ApplicationControllerSpec.org$scalatest$BeforeAndAfterAll$$super$run(ApplicationControllerSpec.scala:13)
+	at org.scalatest.BeforeAndAfterAll.liftedTree1$1(BeforeAndAfterAll.scala:213)
+	at org.scalatest.BeforeAndAfterAll.run(BeforeAndAfterAll.scala:210)
+	at org.scalatest.BeforeAndAfterAll.run$(BeforeAndAfterAll.scala:208)
+	at controllers.ApplicationControllerSpec.run(ApplicationControllerSpec.scala:13)
+	at org.scalatest.tools.Framework.org$scalatest$tools$Framework$$runSuite(Framework.scala:321)
+	at org.scalatest.tools.Framework$ScalaTestTask.execute(Framework.scala:516)
+	at sbt.ForkMain$Run.lambda$runTest$1(ForkMain.java:304)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+</failure>
+                                               </testcase><testcase classname="controllers.ApplicationControllerSpec" name="ApplicationController .delete(id: String) should return a Bad Request if the id does not exist" time="0.017">
+                                                 <failure message="scala.MatchError: None (of class scala.None$)" type="sbt.ForkMain$ForkError">sbt.ForkMain$ForkError: scala.MatchError: None (of class scala.None$)
+	at repositories.DataRepository.$anonfun$read$1(DataRepository.scala:41)
+	at scala.concurrent.impl.Promise$Transformation.run(Promise.scala:470)
+	at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:63)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.$anonfun$run$1(BatchingExecutor.scala:100)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:94)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:100)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:49)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(ForkJoinExecutorConfigurator.scala:48)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1020)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1656)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1594)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:177)
+</failure>
                                                </testcase>
                      <system-out><![CDATA[]]></system-out>
                      <system-err><![CDATA[]]></system-err>

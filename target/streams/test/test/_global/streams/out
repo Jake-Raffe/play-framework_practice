@@ -1,36 +1,83 @@
 [0m[[0m[0mdebug[0m] [0m[0mjavaOptions: Vector()[0m
 [0m[[0m[0mdebug[0m] [0m[0mForking tests - parallelism = false[0m
 [0m[[0m[0mdebug[0m] [0m[0mCreate a single-thread test executor[0m
-[0m[[0m[0mdebug[0m] [0m[0mRunner for org.scalatest.tools.Framework produced 2 initial tasks for 2 tests.[0m
-[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(controllers.HomeControllerSpec, sbt.ForkMain$SubclassFingerscan@10d25925, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunner for org.scalatest.tools.Framework produced 3 initial tasks for 3 tests.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(controllers.HomeControllerSpec, sbt.ForkMain$SubclassFingerscan@4613a451, false, [SuiteSelector])[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mHomeControllerSpec:[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mHomeController GET[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should render the index page from a new instance of controller[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should render the index page from the application[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should render the index page from the router[0m[0m
 [0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 3 events.[0m
-[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(controllers.ApplicationControllerSpec, sbt.ForkMain$SubclassFingerscan@6ea3a537, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(controllers.ApplicationControllerSpec, sbt.ForkMain$SubclassFingerscan@5bebc441, false, [SuiteSelector])[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mApplicationControllerSpec:[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .index()[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should return status OK[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .create()[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should create a book in the database[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should return BadRequest if request body is of wrong format[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .read(id: String)[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should find a book in the database by id[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m- should return a BadRequest if a book of the ID is not found *** FAILED ***[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  scala.MatchError: None (of class scala.None$)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at repositories.DataRepository.$anonfun$read$1(DataRepository.scala:41)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at scala.concurrent.impl.Promise$Transformation.run(Promise.scala:470)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:63)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at akka.dispatch.BatchingExecutor$BlockableBatch.$anonfun$run$1(BatchingExecutor.scala:100)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:94)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:100)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:49)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(ForkJoinExecutorConfigurator.scala:48)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  ...[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .update(id: String, newData: DataModel)[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32m- should find a book in the database by it's ID and replace it with the new book[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m- should return NotFound message if wrong ID *** FAILED ***[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  com.mongodb.MongoWriteException: Write operation error on server localhost:27017. Write error: WriteError{code=66, message='After applying the update, the (immutable) field '_id' was found to have been altered to _id: "abcd"', details={}}.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at com.mongodb.reactivestreams.client.internal.MongoOperationPublisher.lambda$createSingleWriteRequestMono$24(MongoOperationPublisher.java:490)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at reactor.core.publisher.Mono.lambda$onErrorMap$23(Mono.java:3084)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at reactor.core.publisher.Mono.lambda$onErrorResume$25(Mono.java:3174)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at reactor.core.publisher.FluxOnErrorResume$ResumeSubscriber.onError(FluxOnErrorResume.java:88)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at reactor.core.publisher.MonoNext$NextSubscriber.onError(MonoNext.java:87)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at reactor.core.publisher.MonoFlatMap$FlatMapMain.secondError(MonoFlatMap.java:185)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at reactor.core.publisher.MonoFlatMap$FlatMapInner.onError(MonoFlatMap.java:251)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at reactor.core.publisher.FluxPeek$PeekSubscriber.onError(FluxPeek.java:214)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at reactor.core.publisher.MonoCreate$DefaultMonoSink.error(MonoCreate.java:185)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at com.mongodb.reactivestreams.client.internal.MongoOperationPublisher.lambda$sinkToCallback$30(MongoOperationPublisher.java:545)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  ...[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should return Bad_Request if incorrect Json body[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mApplicationController .delete(id: String)[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- should find a book in the database by id and delete it[0m[0m
-[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 5 events.[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m- should find a book in the database by id and delete it *** FAILED ***[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  400 was not equal to 202 (ApplicationControllerSpec.scala:98)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m- should return a Bad Request if the id does not exist *** FAILED ***[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  scala.MatchError: None (of class scala.None$)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at repositories.DataRepository.$anonfun$read$1(DataRepository.scala:41)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at scala.concurrent.impl.Promise$Transformation.run(Promise.scala:470)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:63)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at akka.dispatch.BatchingExecutor$BlockableBatch.$anonfun$run$1(BatchingExecutor.scala:100)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:94)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:100)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:49)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(ForkJoinExecutorConfigurator.scala:48)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  ...[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 10 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(services.LibraryServiceSpec, sbt.ForkMain$SubclassFingerscan@266f9e6a, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mLibraryServiceSpec:[0m[0m
 [0m[[0m[0mdebug[0m] [0m[0mRunner for com.novocode.junit.JUnitFramework produced 0 initial tasks for 0 tests.[0m
 [0m[[0m[0minfo[0m] [0m[0mScalaTest[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 6 seconds, 988 milliseconds.[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 8[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 2, aborted 0[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 8, failed 0, canceled 0, ignored 0, pending 0[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mAll tests passed.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 8 seconds, 103 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 13[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 3, aborted 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 9, failed 4, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m*** 4 TESTS FAILED ***[0m[0m
 [0m[[0m[0mdebug[0m] [0m[0mSummary for JUnit not available.[0m
-[0m[[0m[0minfo[0m] [0m[0mPassed: Total 8, Failed 0, Errors 0, Passed 8[0m
+[0m[[0m[31merror[0m] [0m[0mFailed: Total 13, Failed 4, Errors 0, Passed 9[0m
 [0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	controllers.ApplicationControllerSpec[0m
 [0m[[0m[0mdebug[0m] [0m[0m	controllers.HomeControllerSpec[0m
+[0m[[0m[0mdebug[0m] [0m[0m	services.LibraryServiceSpec[0m
+[0m[[0m[31merror[0m] [0m[0mFailed tests:[0m
+[0m[[0m[31merror[0m] [0m[0m	controllers.ApplicationControllerSpec[0m
+[0m[[0m[31merror[0m] [0m[0m(Test / [31mtest[0m) sbt.TestsFailedException: Tests unsuccessful[0m
