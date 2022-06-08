@@ -1,11 +1,12 @@
 package controllers
 
 import models.DataModel
+import play.api.libs.json.Format.GenericFormat
 import play.api.libs.json.OFormat.oFormatFromReadsAndOWrites
 import play.api.libs.json.{JsError, JsSuccess, JsValue, Json}
 import repositories.DataRepository
 import play.api.mvc._
-import services.ApplicationService
+import services.LibraryService
 
 import java.awt.print.Book
 import java.security.Provider.Service
@@ -16,7 +17,7 @@ import scala.concurrent.{ExecutionContext, Future}
 @Singleton
 class ApplicationController @Inject()(val controllerComponents: ControllerComponents,
                                       val dataRepository: DataRepository,
-                                      val service: ApplicationService,
+                                      val service: LibraryService,
                                       implicit val ec: ExecutionContext
                                      ) extends BaseController {
 
@@ -57,8 +58,9 @@ class ApplicationController @Inject()(val controllerComponents: ControllerCompon
   }
 
   def getGoogleBook(search: String, term: String): Action[AnyContent] = Action.async { implicit request =>
-    service.getGoogleBook(search = search, term = term).map {
-       result => Ok(Json.toJson(result))
+    service.getGoogleBook(search = search, term = term).value.map {
+      case Right(book) => Ok(Json.toJson(book))
+      case Left(error) => NotFound
     }
   }
 }
