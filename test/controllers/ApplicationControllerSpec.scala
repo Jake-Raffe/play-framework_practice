@@ -111,7 +111,7 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
 
   "ApplicationController .delete(id: String)" should {
     "find a book in the database by id and delete it" in {
-//      beforeEach()
+      beforeEach()
       val request: FakeRequest[JsValue] = buildPost("/api").withBody[JsValue](Json.toJson(dataModel))
       val createdResult = TestApplicationController.create()(request)
       await(createdResult)

@@ -1,3 +1,9 @@
+[0m[[0m[33mwarn[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/app/controllers/ApplicationController.scala:49:58: Lowercase el for long is not recommended because it is easy to confuse with numeral 1; use uppercase L instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m          case result if result.getModifiedCount.equals(0l) =>[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                         ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/app/controllers/ApplicationController.scala:52:76: Lowercase el for long is not recommended because it is easy to confuse with numeral 1; use uppercase L instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m          case result => {println("good" + result.getModifiedCount.equals(0l)); Accepted(Json.toJson(data))}[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                           ^[0m
 [0m[[0m[33mwarn[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/conf/routes:7:1: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method index,[0m
 [0m[[0m[33mwarn[0m] [0m[0mor remove the empty argument list from its definition (Java-defined methods are exempt).[0m
 [0m[[0m[33mwarn[0m] [0m[0mIn Scala 3, an unapplied method like this will be eta-expanded into a function.[0m
@@ -14,14 +20,10 @@
 [0m[[0m[33mwarn[0m] [0m[0mor remove the empty argument list from its definition (Java-defined methods are exempt).[0m
 [0m[[0m[33mwarn[0m] [0m[0mIn Scala 3, an unapplied method like this will be eta-expanded into a function.[0m
 [0m[[0m[33mwarn[0m] [0m[0mPOST    /api                     controllers.ApplicationController.create[0m
-[0m[[0m[33mwarn[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/app/controllers/ApplicationController.scala:46:16: patterns after a variable pattern cannot match (SLS 8.1.1)[0m
-[0m[[0m[33mwarn[0m] [0m[0m          case result => Accepted(Json.toJson(data))[0m
-[0m[[0m[33mwarn[0m] [0m[0m               ^[0m
-[0m[[0m[33mwarn[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/app/controllers/ApplicationController.scala:47:21: unreachable code due to variable pattern 'result' on line 46[0m
-[0m[[0m[33mwarn[0m] [0m[0m          case _ => NotFound[0m
-[0m[[0m[33mwarn[0m] [0m[0m                    ^[0m
-[0m[[0m[33mwarn[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/app/repositories/DataRepository.scala:41:52: match may not be exhaustive.[0m
-[0m[[0m[33mwarn[0m] [0m[0mIt would fail on the following input: None[0m
-[0m[[0m[33mwarn[0m] [0m[0m    collection.find(byID(id)).headOption() flatMap {[0m
-[0m[[0m[33mwarn[0m] [0m[0m                                                   ^[0m
-[0m[[0m[33mwarn[0m] [0m[0m7 warnings found[0m
+[0m[[0m[33mwarn[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/app/controllers/ApplicationController.scala:40:12: patterns after a variable pattern cannot match (SLS 8.1.1)[0m
+[0m[[0m[33mwarn[0m] [0m[0m      case dataModel => Ok(Json.toJson(dataModel))[0m
+[0m[[0m[33mwarn[0m] [0m[0m           ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/app/controllers/ApplicationController.scala:41:27: unreachable code due to variable pattern 'dataModel' on line 40[0m
+[0m[[0m[33mwarn[0m] [0m[0m      case _ => BadRequest("Unknown error")[0m
+[0m[[0m[33mwarn[0m] [0m[0m                          ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m8 warnings found[0m
