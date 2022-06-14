@@ -1,12 +1,14 @@
 package controllers
 
-import models.DataModel
+import cats.data.EitherT
+import models.APIError.BadAPIResponse
+import models.{APIError, DataModel}
 import play.api.libs.json.Format.GenericFormat
 import play.api.libs.json.OFormat.oFormatFromReadsAndOWrites
 import play.api.libs.json.{JsError, JsSuccess, JsValue, Json}
 import repositories.DataRepository
 import play.api.mvc._
-import services.LibraryService
+import services.{ApplicationService, LibraryService}
 
 import java.awt.print.Book
 import java.security.Provider.Service
@@ -17,6 +19,7 @@ import scala.concurrent.{ExecutionContext, Future}
 @Singleton
 class ApplicationController @Inject()(val controllerComponents: ControllerComponents,
                                       val dataRepository: DataRepository,
+                                     val applicationService: ApplicationService,
                                       val service: LibraryService,
                                       implicit val ec: ExecutionContext
                                      ) extends BaseController {
@@ -27,38 +30,34 @@ class ApplicationController @Inject()(val controllerComponents: ControllerCompon
   }
 
   def create(): Action[JsValue] = Action.async(parse.json) { implicit request =>
-    request.body.validate[DataModel] match {
-      case JsSuccess(dataModel, _) =>
-        dataRepository.create(dataModel).map(result => Created(Json.toJson(result)))
-      case JsError(_) => Future(BadRequest)
+    applicationService.create(request).map {
+      case Right(value) => Created(Json.toJson(value))
+      case Left(error) => Status(error.httpResponseStatus)
     }
   }
 
   def read(id: String): Action[AnyContent] = Action.async { implicit request =>
-    dataRepository.read(id).map {
-      case dataModel if dataModel._id.equals("empty") => BadRequest
-      case dataModel => Ok(Json.toJson(dataModel))
-      case _ => BadRequest("Unknown error")
+    applicationService.read(id).map {
+      case Right(value) => value
+      case Left(error) => Status(error.httpResponseStatus)
     }
   }
 
   def update(id: String): Action[JsValue] = Action.async(parse.json) { implicit request =>
     request.body.validate[DataModel] match {
       case JsSuccess(data, _) =>
-        dataRepository.update(id, data).map {
-          case result if result.getModifiedCount.equals(0l) =>
-            dataRepository.read(id).map(foo => println(s"bad $foo"))
-            BadRequest
-          case result => {println("good" + result.getModifiedCount.equals(0l)); Accepted(Json.toJson(data))}
+        applicationService.update(id, data).map {
+          case Left(error) => Status(error.httpResponseStatus)
+          case Right(value) => value
         }
       case JsError(_) => Future(BadRequest)
     }
   }
 
   def delete(id: String): Action[AnyContent] = Action.async { implicit request =>
-    dataRepository.delete(id).map {
-      case 1 => Accepted
-      case _ => BadRequest
+    applicationService.delete(id).map {
+      case Right(right) => right
+      case Left(error) => Status(error.httpResponseStatus)
     }
   }
 

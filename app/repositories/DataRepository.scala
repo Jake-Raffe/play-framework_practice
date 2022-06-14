@@ -1,6 +1,9 @@
 package repositories
 
-import models.DataModel
+import akka.actor.Status.Success
+import com.mongodb.client.result.InsertOneResult
+import models.APIError.BadAPIResponse
+import models.{APIError, DataModel}
 import org.mongodb.scala.bson.conversions.Bson
 import org.mongodb.scala.model.Filters.empty
 import org.mongodb.scala.model._
@@ -26,11 +29,11 @@ class DataRepository @Inject()(
 
   val emptyData = new DataModel("empty", "", "", 0)
 
-  def create(book: DataModel): Future[DataModel] =
-    collection
-      .insertOne(book)
-      .toFuture()
-      .map(_ => book)
+  def create(book: DataModel): Future[Either[APIError, DataModel]] =
+    collection.insertOne(book).toFuture().map {
+      case result: InsertOneResult if result.wasAcknowledged() => Right(book)
+      case _ => Left(APIError.BadAPIResponse(400, "Bad Request"))
+    }
 
   private def byID(id: String): Bson =
     Filters.and(
