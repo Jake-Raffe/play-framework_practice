@@ -39,12 +39,24 @@ class DataRepository @Inject()(
     Filters.and(
       Filters.equal("_id", id)
     )
+  private def byName(name: String): Bson =
+    Filters.and(
+      Filters.equal("name", name)
+    )
 
-  def read(id: String): Future[DataModel] =
-    collection.find(byID(id)).headOption() flatMap {
-      case Some(data) => Future(data)
-      case _ => Future(emptyData)
-    }
+  def read(findBy: String, identifier: String): Future[DataModel] = {
+    if (findBy.equals("ID"))
+      collection.find(byID(identifier)).headOption() flatMap {
+        case Some(data) => Future(data)
+        case _ => Future(emptyData)
+      }
+    else if (findBy.equals("name"))
+      collection.find(byName(identifier)).headOption() flatMap {
+        case Some(data) => Future(data)
+        case _ => Future(emptyData)
+      }
+    else Future(emptyData)
+  }
 
   def update(id: String, book: DataModel): Future[result.UpdateResult] =
     collection.replaceOne(

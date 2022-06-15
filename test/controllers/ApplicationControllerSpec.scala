@@ -19,6 +19,7 @@ class ApplicationControllerSpec extends BaseSpecWithApplication {
     component,
     repository,
     applicationService,
+    libraryService,
     executionContext
   )
 

@@ -19,8 +19,8 @@ import scala.concurrent.{ExecutionContext, Future}
 @Singleton
 class ApplicationController @Inject()(val controllerComponents: ControllerComponents,
                                       val dataRepository: DataRepository,
-                                     val applicationService: ApplicationService,
-                                      val service: LibraryService,
+                                      val applicationService: ApplicationService,
+                                      val libraryService: LibraryService,
                                       implicit val ec: ExecutionContext
                                      ) extends BaseController {
 
@@ -36,8 +36,14 @@ class ApplicationController @Inject()(val controllerComponents: ControllerCompon
     }
   }
 
-  def read(id: String): Action[AnyContent] = Action.async { implicit request =>
-    applicationService.read(id).map {
+  def readId(id: String): Action[AnyContent] = Action.async { implicit request =>
+    applicationService.read("ID", id).map {
+      case Right(value) => value
+      case Left(error) => Status(error.httpResponseStatus)
+    }
+  }
+  def readName(name: String): Action[AnyContent] = Action.async { implicit request =>
+    applicationService.read("name", name).map {
       case Right(value) => value
       case Left(error) => Status(error.httpResponseStatus)
     }
@@ -62,7 +68,7 @@ class ApplicationController @Inject()(val controllerComponents: ControllerCompon
   }
 
   def getGoogleBook(search: String, term: String): Action[AnyContent] = Action.async { implicit request =>
-    service.getGoogleBook(search = search, term = term).value.map {
+    libraryService.getGoogleBook(search = search, term = term).value.map {
       case Right(book) => Ok(Json.toJson(book))
       case Left(error) => NotFound
     }

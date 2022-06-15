@@ -7,7 +7,8 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 GET     /api                        controllers.ApplicationController.index
 
 POST    /api                     controllers.ApplicationController.create
-GET     /api/:id                 controllers.ApplicationController.read(id: String)
+GET     /api/id:id               controllers.ApplicationController.readId(id: String)
+GET     /api/name:name           controllers.ApplicationController.readName(name: String)
 PUT     /api/:id                 controllers.ApplicationController.update(id: String)
 DELETE  /api/:id                 controllers.ApplicationController.delete(id: String)
 

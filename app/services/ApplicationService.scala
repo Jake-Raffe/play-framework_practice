@@ -30,12 +30,13 @@ class ApplicationService @Inject() (val dataRepository: DataRepository,
       case JsError(_) => Future(Left(APIError.BadAPIResponse(400, "Unable to validate request body format")))
     }
 
-  def read(id: String): Future[Either[APIError, Result]] =
-    dataRepository.read(id).map {
-      case dataModel if dataModel._id.equals("empty") => Left(BadAPIResponse(400, s"Unable to find book of ID: $id"))
+  def read(findBy: String, identifier: String): Future[Either[APIError, Result]] = {
+    dataRepository.read(findBy, identifier).map {
+      case dataModel if dataModel._id.equals("empty") => Left(BadAPIResponse(400, s"Unable to find book of $findBy: $identifier"))
       case dataModel => Right(Ok(Json.toJson(dataModel)))
       case _ => Left(BadAPIResponse(400, "Unable to complete request"))
     }
+  }
 
   def update(id: String, newBook: DataModel): Future[Either[APIError, Result]] =
         dataRepository.update(id, newBook).map {
