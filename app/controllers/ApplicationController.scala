@@ -2,7 +2,7 @@ package controllers
 
 import cats.data.EitherT
 import models.APIError.BadAPIResponse
-import models.{APIError, DataModel}
+import models.{APIError, DataModel, UpdateField}
 import play.api.libs.json.Format.GenericFormat
 import play.api.libs.json.OFormat.oFormatFromReadsAndOWrites
 import play.api.libs.json.{JsError, JsSuccess, JsValue, Json}
@@ -53,6 +53,16 @@ class ApplicationController @Inject()(val controllerComponents: ControllerCompon
     request.body.validate[DataModel] match {
       case JsSuccess(data, _) =>
         applicationService.update(id, data).map {
+          case Left(error) => Status(error.httpResponseStatus)
+          case Right(value) => value
+        }
+      case JsError(_) => Future(BadRequest)
+    }
+  }
+  def edit(id: String): Action[JsValue] = Action.async(parse.json) { implicit request =>
+    request.body.validate[UpdateField] match {
+      case JsSuccess(data, _) =>
+        applicationService.edit(id, data).map {
           case Left(error) => Status(error.httpResponseStatus)
           case Right(value) => value
         }

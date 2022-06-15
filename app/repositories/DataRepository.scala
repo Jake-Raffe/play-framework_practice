@@ -65,6 +65,19 @@ class DataRepository @Inject()(
       options = new ReplaceOptions().upsert(false) //What happens when we set this to false?
     ).toFuture()
 
+  def edit(original: DataModel, fieldName: String, edit: String): Future[result.UpdateResult] = {
+    val updatedBook = fieldName match {
+        case "name" => DataModel(original._id, edit, original.description, original.numSales)
+        case "description" => DataModel(original._id, original.name, edit, original.numSales)
+        case "numSales" if edit => DataModel(original._id, original.name, original.description, edit.toInt)
+      }
+    collection.replaceOne(
+      filter = byID(updatedBook._id),
+      replacement = updatedBook,
+      options = new ReplaceOptions().upsert(false) //What happens when we set this to false?
+    ).toFuture()
+  }
+
   def delete(id: String): Future[Long] =
     collection.deleteOne(filter = byID(id)).toFuture().map(_.getDeletedCount)
 

@@ -5,7 +5,7 @@ import models.APIError.BadAPIResponse
 
 import javax.inject.Inject
 import javax.inject.Singleton
-import models.{APIError, DataModel}
+import models.{APIError, DataModel, UpdateField}
 import play.api.libs.json.Format.GenericFormat
 import play.api.libs.json.OFormat.oFormatFromReadsAndOWrites
 import play.api.libs.json._
@@ -39,11 +39,18 @@ class ApplicationService @Inject() (val dataRepository: DataRepository,
   }
 
   def update(id: String, newBook: DataModel): Future[Either[APIError, Result]] =
-        dataRepository.update(id, newBook).map {
-          case result if result.getModifiedCount.equals(0l) =>
-            Left(APIError.BadAPIResponse(400, s"Unable to update book of ID: $id"))
-          case result => Right(Accepted(Json.toJson(newBook)))
-        }
+    dataRepository.update(id, newBook).map {
+      case result if result.getModifiedCount.equals(0l) =>
+        Left(APIError.BadAPIResponse(400, s"Unable to update book of ID: $id"))
+      case result => Right(Accepted(Json.toJson(newBook)))
+    }
+
+  def edit(id: String, update: UpdateField): Future[Either[APIError, Result]] =
+    dataRepository.read("ID", id).map(original => dataRepository.edit(original, update.fieldName, update.edit)).map {
+      case result if result.map(value => value.getModifiedCount.equals(0l)) =>
+        Left(APIError.BadAPIResponse(400, s"Unable to update book of ID: $id"))
+      case result => Right(Accepted(Json.toJson(update)))
+    }
 
 
   def delete(id: String): Future[Either[APIError, Result]] =
