@@ -48,7 +48,7 @@ class ApplicationService @Inject() (val dataRepository: DataRepository,
   def edit(id: String, update: UpdateField): Future[Either[APIError, Result]] =
     dataRepository.read("ID", id).map(original => dataRepository.edit(original, update.fieldName, update.edit)).map {
       case result if result.map(value => value.getModifiedCount.equals(0l)) =>
-        Left(APIError.BadAPIResponse(400, s"Unable to update book of ID: $id"))
+        Left(APIError.BadAPIResponse(400, s"Unable to edit book of ID: $id"))
       case result => Right(Accepted(Json.toJson(update)))
     }
 

@@ -2,6 +2,9 @@ package controllers
 
 import baseSpec.BaseSpecWithApplication
 import models.DataModel
+import org.scalamock.scalatest.MockFactory
+import org.scalatest.concurrent.ScalaFutures
+import org.scalatestplus.play.guice.GuiceOneAppPerSuite
 import play.api.test.{FakeRequest, Injecting}
 import play.api.http.Status
 import play.api.libs.json.{JsValue, Json}
@@ -12,7 +15,7 @@ import uk.gov.hmrc.mongo.MongoComponent
 
 import scala.concurrent.Future
 
-class ApplicationControllerSpec extends BaseSpecWithApplication {
+class ApplicationControllerSpec extends BaseSpecWithApplication with MockFactory with ScalaFutures with GuiceOneAppPerSuite {
 // with Injecting with GuiceOneAppPerSuite {
 
   val TestApplicationController = new ApplicationController(
