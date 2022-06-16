@@ -5,7 +5,8 @@ import com.mongodb.client.result.InsertOneResult
 import models.APIError.BadAPIResponse
 import models.{APIError, DataModel}
 import org.mongodb.scala.bson.conversions.Bson
-import org.mongodb.scala.model.Filters.empty
+import org.mongodb.scala.model.Updates.set
+import org.mongodb.scala.model.Filters.{empty, equal}
 import org.mongodb.scala.model._
 import org.mongodb.scala.result
 import uk.gov.hmrc.mongo.MongoComponent
@@ -65,17 +66,16 @@ class DataRepository @Inject()(
       options = new ReplaceOptions().upsert(false)
     ).toFuture()
 
-  def edit(original: DataModel, fieldName: String, edit: String): Future[result.UpdateResult] = {
-    val updatedBook = fieldName match {
-        case "name" => DataModel(original._id, edit, original.description, original.numSales)
-        case "description" => DataModel(original._id, original.name, edit, original.numSales)
-        case "numSales" => DataModel(original._id, original.name, original.description, edit.toInt)
-      }
-    collection.replaceOne(
-      filter = byID(updatedBook._id),
-      replacement = updatedBook,
-      options = new ReplaceOptions().upsert(false)
-    ).toFuture()
+  def edit(id: String, fieldName: String, edit: String): Future[Option[DataModel]] = {
+    collection.findOneAndUpdate(
+      equal("_id", id),
+      set(fieldName, edit)
+      ).toFutureOption()
+//    val updatedBook = fieldName match {
+//        case "name" => DataModel(original._id, edit, original.description, original.numSales)
+//        case "description" => DataModel(original._id, original.name, edit, original.numSales)
+//        case "numSales" => DataModel(original._id, original.name, original.description, edit.toInt)
+//      }
   }
 
   def delete(id: String): Future[Long] =
