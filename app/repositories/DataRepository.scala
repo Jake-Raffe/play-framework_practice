@@ -29,6 +29,7 @@ class DataRepository @Inject()(
 ) {
 
   val emptyData = new DataModel("empty", "", "", 0)
+  val errorData = new DataModel("error", "", "", 0)
 
   def create(book: DataModel): Future[Either[APIError, DataModel]] =
     collection.insertOne(book).toFuture().map {
@@ -36,10 +37,12 @@ class DataRepository @Inject()(
       case _ => Left(APIError.BadAPIResponse(400, "Bad Request"))
     }
 
-  private def byID(id: String): Bson =
+  private def byID(id: String): Bson = {
     Filters.and(
       Filters.equal("_id", id)
     )
+  }
+
   private def byName(name: String): Bson =
     Filters.and(
       Filters.equal("name", name)
@@ -56,7 +59,7 @@ class DataRepository @Inject()(
         case Some(data) => Future(data)
         case _ => Future(emptyData)
       }
-    else Future(emptyData)
+    else Future(errorData)
   }
 
   def update(id: String, book: DataModel): Future[result.UpdateResult] =
@@ -69,13 +72,9 @@ class DataRepository @Inject()(
   def edit(id: String, fieldName: String, edit: String): Future[Option[DataModel]] = {
     collection.findOneAndUpdate(
       equal("_id", id),
-      set(fieldName, edit)
+      set(fieldName, edit),
+      options = FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER)
       ).toFutureOption()
-//    val updatedBook = fieldName match {
-//        case "name" => DataModel(original._id, edit, original.description, original.numSales)
-//        case "description" => DataModel(original._id, original.name, edit, original.numSales)
-//        case "numSales" => DataModel(original._id, original.name, original.description, edit.toInt)
-//      }
   }
 
   def delete(id: String): Future[Long] =

@@ -23,16 +23,22 @@ import scala.concurrent._
 class ApplicationService @Inject() (val dataRepository: DataRepository,
                          implicit val ec: ExecutionContext) {
 
+  def index(): Future[Either[APIError, Seq[JsValue]]] = {
+    dataRepository.collection.find().toFuture().map{
+      case books: Seq[DataModel] => Right(books.map(book => Json.toJson(book)))
+      case _ => Left(APIError.BadAPIResponse(400, "Unknown error"))
+    }
+  }
+
   def create(request: Request[JsValue]): Future[Either[APIError, DataModel]] =
     request.body.validate[DataModel] match {
-      case JsSuccess(dataModel, _) =>
-        dataRepository.create(dataModel)
-      case JsError(_) => Future(Left(APIError.BadAPIResponse(400, "Unable to validate request body format")))
+      case JsSuccess(dataModel, _) => dataRepository.create(dataModel)
+      case JsError(_) => Future(Left(APIError.BadAPIResponse(415, "Unable to validate request body format")))
     }
 
   def read(findBy: String, identifier: String): Future[Either[APIError, Result]] = {
     dataRepository.read(findBy, identifier).map {
-      case dataModel if dataModel._id.equals("empty") => Left(BadAPIResponse(400, s"Unable to find book of $findBy: $identifier"))
+      case dataModel if dataModel._id.equals("empty") => Left(BadAPIResponse(404, s"Unable to find book of $findBy: $identifier"))
       case dataModel => Right(Ok(Json.toJson(dataModel)))
       case _ => Left(BadAPIResponse(400, "Unable to complete request"))
     }
@@ -40,7 +46,7 @@ class ApplicationService @Inject() (val dataRepository: DataRepository,
 
   def update(id: String, newBook: DataModel): Future[Either[APIError, Result]] =
     dataRepository.update(id, newBook).map {
-      case result if result.getModifiedCount.equals(0l) =>
+      case result if result.getModifiedCount.equals(0L) =>
         Left(APIError.BadAPIResponse(400, s"Unable to update book of ID: $id"))
       case result => Right(Accepted(Json.toJson(newBook)))
     }
@@ -49,11 +55,7 @@ class ApplicationService @Inject() (val dataRepository: DataRepository,
     dataRepository.edit(id, update.fieldName, update.edit).map {
       case None => Left(APIError.BadAPIResponse(400, s"Unable to edit book of ID: $id"))
       case Some(updatedBook) => Right(Accepted(Json.toJson(updatedBook)))
-//      case result if result.getModifiedCount.equals(0l) =>
-//        Left(APIError.BadAPIResponse(400, s"Unable to edit book of ID: $id"))
-//      case result => Right(Accepted(Json.toJson(update)))
     }
-
 
   def delete(id: String): Future[Either[APIError, Result]] =
     dataRepository.delete(id).map {
