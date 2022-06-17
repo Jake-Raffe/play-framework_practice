@@ -32,8 +32,8 @@ class DataRepository @Inject()(
   val errorData = new DataModel("error", "", "", 0)
 
   def create(book: DataModel): Future[Either[APIError, DataModel]] =
-    collection.insertOne(book).toFuture().map {
-      case result: InsertOneResult if result.wasAcknowledged() => Right(book)
+    collection.insertOne(book).toFutureOption().map {
+      case Some(result: InsertOneResult) if result.wasAcknowledged() => Right(book)
       case _ => Left(APIError.BadAPIResponse(400, "Bad Request"))
     }
 
