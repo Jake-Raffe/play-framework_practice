@@ -28,20 +28,10 @@ class ApplicationControllerSpec extends BaseSpecWithApplication with MockFactory
   override implicit lazy val app: Application = fakeApplication()
   val integrationTestApplicationController = new ApplicationController(
     component,
-//    repository,
     applicationService,
     libraryService,
     executionContext
   )
-  val unitTestApplicationController = new ApplicationController(
-    component,
-    mockApplicationService,
-    mockLibraryService,
-    executionContext
-  )
-
-  val mockApplicationService = mock[ApplicationService]
-  val mockLibraryService = mock[LibraryService]
 
   private val mockDataModel: DataModel = DataModel(
     "1",
@@ -73,35 +63,6 @@ class ApplicationControllerSpec extends BaseSpecWithApplication with MockFactory
     "description",
     "this is the edited description"
   )
-
-  // UNIT TESTING
-
-//  "ApplicationController .create()" should {
-//    "return Created with the book that has been added to the database" in {
-//      val request: FakeRequest[JsValue] = buildPost("/api").withBody[JsValue](mockJsonBook)
-//      (mockApplicationService.create(_: Request[JsValue]) )
-//        .expects(request)
-//        .returning(Future[Either[APIError, DataModel]](Right(mockDataModel)))
-//        .once()
-//      whenReady(unitTestApplicationController.create()(request)) { result =>
-//        result shouldBe Created(Json.toJson(mockDataModel))
-//      }
-//    }}
-//
-//    "return a BadAPIResponse if the request body is of the wrong format" in {
-//      val badRequest: FakeRequest[JsValue] = buildPost("/api").withBody[JsValue](Json.obj())
-//      (mockApplicationService.create _)
-//        .expects(badRequest)
-//        .returning(Future[Either[APIError, DataModel]](Left(BadAPIResponse(400, "Unable to complete request"))))
-//        .once()
-//      whenReady(unitTestApplicationController.create()) { result =>
-//        result shouldBe BadAPIResponse(400, "Unable to complete request")
-//      }
-//    }
-//  }
-
-
-  // INTEGRATION TESTING
 
   // Index good
   "ApplicationController .index()" should {
