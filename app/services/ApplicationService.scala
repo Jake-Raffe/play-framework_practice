@@ -20,14 +20,10 @@ import javax.inject._
 import scala.concurrent._
 
 @Singleton
-class ApplicationService @Inject() (val dataRepository: DataRepository,
-                         implicit val ec: ExecutionContext) {
+class ApplicationService @Inject() (dataRepository: DataRepository)(implicit ec: ExecutionContext) {
 
   def index(): Future[Either[APIError, Seq[JsValue]]] = {
-    dataRepository.collection.find().toFuture().map{
-      case books: Seq[DataModel] => Right(books.map(book => Json.toJson(book)))
-      case _ => Left(APIError.BadAPIResponse(400, "Unknown error"))
-    }
+    dataRepository.index()
   }
 
   def create(request: Request[JsValue]): Future[Either[APIError, DataModel]] =
