@@ -1,6 +1,7 @@
 package repositories
 
 import akka.actor.Status.Success
+import com.google.inject.ImplementedBy
 import com.mongodb.client.result.InsertOneResult
 import models.APIError.BadAPIResponse
 import models.{APIError, DataModel}
@@ -17,25 +18,24 @@ import javax.inject.{Inject, Singleton}
 import scala.concurrent.duration.SECONDS
 import scala.concurrent.{ExecutionContext, Future}
 
+@ImplementedBy(classOf[DataRepository])
+trait DataRepositoryTrait {
+  def index(): Future[Either[APIError, Seq[JsValue]]]
+  def create(book: DataModel): Future[Either[APIError, DataModel]]
+  def read(findBy: String, identifier: String): Future[DataModel]
+  def update(id: String, book: DataModel): Future[Either[APIError, DataModel]]
+  def edit(id: String, fieldName: String, edit: String): Future[Option[DataModel]]
+  def delete(id: String): Future[Long]
+}
+
 @Singleton
 class DataRepository @Inject()(mongoComponent: MongoComponent)(implicit ec: ExecutionContext) extends PlayMongoRepository[DataModel](
   collectionName = "dataModels",
   mongoComponent = mongoComponent,
   domainFormat = DataModel.formats,
   indexes = Seq(IndexModel(
-    Indexes.ascending("_id"),
-    IndexOptions().name("ttlIndex").unique(true).expireAfter(0, SECONDS))
-  ,IndexModel(
-      Indexes.ascending("name"),
-      IndexOptions().name("name").unique(true).expireAfter(0, SECONDS))
-  ,IndexModel(
-      Indexes.ascending("description"),
-      IndexOptions().name("description").unique(true).expireAfter(0, SECONDS))
-  ,IndexModel(
-      Indexes.ascending("numSales"),
-      IndexOptions().name("numSales").unique(true).expireAfter(0, SECONDS))
-  )
-) {
+    Indexes.ascending("_id")))
+  ) with DataRepositoryTrait {
 
   val emptyData = new DataModel("empty", "", "", 0)
   val errorData = new DataModel("error", "", "", 0)
@@ -78,12 +78,16 @@ class DataRepository @Inject()(mongoComponent: MongoComponent)(implicit ec: Exec
     else Future(errorData)
   }
 
-  def update(id: String, book: DataModel): Future[result.UpdateResult] =
+  def update(id: String, book: DataModel): Future[Either[APIError, DataModel]] = {
     collection.replaceOne(
       filter = byID(id),
       replacement = book,
       options = new ReplaceOptions().upsert(false)
-    ).toFuture()
+    ).toFutureOption().map{
+      case Some(value) if value.wasAcknowledged() => Right(book)
+      case _ => Left(APIError.BadAPIResponse(400, s"Unable to update book of ID: $id"))
+    }
+  }
 
   def edit(id: String, fieldName: String, edit: String): Future[Option[DataModel]] = {
     collection.findOneAndUpdate(

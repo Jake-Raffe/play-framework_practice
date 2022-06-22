@@ -32,6 +32,7 @@ Seq[Any](format.raw/*2.1*/("""
 
     <div class="container mb-5">
       <h1 class="display-3 row">Welcome to Play</h1>
+      <a href=main.scala.html>Main</a>
     </div>
 
     <p class="lead">
@@ -104,7 +105,7 @@ Seq[Any](format.raw/*2.1*/("""
   </div>
 
 </div>
-""")))}),format.raw/*83.2*/("""
+""")))}),format.raw/*84.2*/("""
 """))
       }
     }
@@ -121,11 +122,11 @@ Seq[Any](format.raw/*2.1*/("""
 
               /*
                   -- GENERATED --
-                  DATE: 2022-05-25T16:47:09.469369
+                  DATE: 2022-06-22T11:32:56.875441
                   SOURCE: /Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/app/views/index.scala.html
-                  HASH: 1da15da1545ef9f138650600a2946acb4443c0f4
-                  MATRIX: 722->1|818->4|845->6|880->33|919->35|947->37|3092->2152
-                  LINES: 21->1|26->2|27->3|27->3|27->3|29->5|107->83
+                  HASH: deac363cc0ae56a8b8cf7cd503905af93b5db371
+                  MATRIX: 722->1|818->4|845->6|880->33|919->35|947->37|3131->2191
+                  LINES: 21->1|26->2|27->3|27->3|27->3|29->5|108->84
                   -- GENERATED --
               */
           

@@ -10,7 +10,7 @@ import play.api.libs.json.Format.GenericFormat
 import play.api.libs.json.OFormat.oFormatFromReadsAndOWrites
 import play.api.libs.json._
 import play.api.mvc.Results.{Accepted, BadRequest, Created, Ok}
-import repositories.DataRepository
+import repositories.{DataRepository, DataRepositoryTrait}
 import play.api.mvc._
 import services.LibraryService
 
@@ -20,7 +20,7 @@ import javax.inject._
 import scala.concurrent._
 
 @Singleton
-class ApplicationService @Inject() (dataRepository: DataRepository)(implicit ec: ExecutionContext) {
+class ApplicationService @Inject()(dataRepository: DataRepositoryTrait)(implicit ec: ExecutionContext) {
 
   def index(): Future[Either[APIError, Seq[JsValue]]] = {
     dataRepository.index()
@@ -42,9 +42,11 @@ class ApplicationService @Inject() (dataRepository: DataRepository)(implicit ec:
 
   def update(id: String, newBook: DataModel): Future[Either[APIError, Result]] =
     dataRepository.update(id, newBook).map {
-      case result if result.getModifiedCount.equals(0L) =>
-        Left(APIError.BadAPIResponse(400, s"Unable to update book of ID: $id"))
-      case result => Right(Accepted(Json.toJson(newBook)))
+      case Right(result) => Right(Accepted(Json.toJson(result)))
+      case Left(error) =>Left(error)
+//      case result if result.getModifiedCount.equals(0L) =>
+//        Left(APIError.BadAPIResponse(400, s"Unable to update book of ID: $id"))
+//      case result => Right(Accepted(Json.toJson(newBook)))
     }
 
   def edit(id: String, update: UpdateField): Future[Either[APIError, Result]] =

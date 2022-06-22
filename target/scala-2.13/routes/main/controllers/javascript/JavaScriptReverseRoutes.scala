@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/conf/routes
-// @DATE:Wed Jun 08 10:54:10 BST 2022
+// @DATE:Wed Jun 22 09:58:37 BST 2022
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -18,17 +18,27 @@ package controllers.javascript {
     }
 
   
-    // @LINE:10
-    def read: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.ApplicationController.read",
+    // @LINE:9
+    def readName: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ApplicationController.readName",
       """
-        function(id0) {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "api/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("id", id0))})
+        function(name0) {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "api/name/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("name", name0))})
         }
       """
     )
   
-    // @LINE:9
+    // @LINE:14
+    def edit: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ApplicationController.edit",
+      """
+        function(id0) {
+          return _wA({method:"PUT", url:"""" + _prefix + { _defaultPrefix } + """" + "api/edit/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("id", id0))})
+        }
+      """
+    )
+  
+    // @LINE:11
     def create: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.ApplicationController.create",
       """
@@ -38,7 +48,17 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:14
+    // @LINE:8
+    def readId: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.ApplicationController.readId",
+      """
+        function(id0) {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "api/id/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("id", id0))})
+        }
+      """
+    )
+  
+    // @LINE:18
     def getGoogleBook: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.ApplicationController.getGoogleBook",
       """
@@ -48,7 +68,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:12
+    // @LINE:16
     def delete: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.ApplicationController.delete",
       """
@@ -58,7 +78,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:11
+    // @LINE:13
     def update: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.ApplicationController.update",
       """

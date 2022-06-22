@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/conf/routes
-// @DATE:Wed Jun 08 10:54:10 BST 2022
+// @DATE:Wed Jun 22 09:58:37 BST 2022
 
 import play.api.mvc.Call
 
@@ -17,31 +17,43 @@ package controllers {
     }
 
   
-    // @LINE:10
-    def read(id:String): Call = {
+    // @LINE:9
+    def readName(name:String): Call = {
       
-      Call("GET", _prefix + { _defaultPrefix } + "api/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[String]].unbind("id", id)))
+      Call("GET", _prefix + { _defaultPrefix } + "api/name/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[String]].unbind("name", name)))
     }
   
-    // @LINE:9
+    // @LINE:14
+    def edit(id:String): Call = {
+      
+      Call("PUT", _prefix + { _defaultPrefix } + "api/edit/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[String]].unbind("id", id)))
+    }
+  
+    // @LINE:11
     def create(): Call = {
       
       Call("POST", _prefix + { _defaultPrefix } + "api")
     }
   
-    // @LINE:14
+    // @LINE:8
+    def readId(id:String): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "api/id/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[String]].unbind("id", id)))
+    }
+  
+    // @LINE:18
     def getGoogleBook(search:String, term:String): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "library/google/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[String]].unbind("search", search)) + "/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[String]].unbind("term", term)))
     }
   
-    // @LINE:12
+    // @LINE:16
     def delete(id:String): Call = {
       
       Call("DELETE", _prefix + { _defaultPrefix } + "api/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[String]].unbind("id", id)))
     }
   
-    // @LINE:11
+    // @LINE:13
     def update(id:String): Call = {
       
       Call("PUT", _prefix + { _defaultPrefix } + "api/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[String]].unbind("id", id)))
