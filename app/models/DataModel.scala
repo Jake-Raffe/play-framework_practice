@@ -4,7 +4,7 @@ import org.mongodb.scala.bson.BsonDocument
 import play.api.libs.json.{JsValue, Json, OFormat, Writes}
 
 
-case class DataModel(id: String,
+case class DataModel(_id: String,
                      title: String,
                      description: String,
                      pageCount: Int)

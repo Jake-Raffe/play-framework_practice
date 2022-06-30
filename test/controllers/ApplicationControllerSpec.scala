@@ -46,26 +46,26 @@ class ApplicationControllerSpec extends BaseSpecWithApplication with MockFactory
 //    "numSales" -> 100
 //  )
   private val googleBookExample: DataModel = DataModel(
-    "ILsWC2CLZLwC",
-    "The Fellowship of the Ring",
-    "Frodo Baggins, bearer of the Ring of Power that would enable the evil Sauron to destroy all that is good in Middle-earth, takes on the task of carrying the Ring to Mount Doom to oversee its destruction. A new cover features artwork from the upcoming film adaptation of \"The Lord of the Rings: The Fellowship of the Ring, \" starring Elijah Wood, Sir Ian McKellen, Cate Blanchett, and Liv Tyler, scheduled for release in December. Copyright © Libri GmbH. All rights reserved.",
-    527
+    "bDcJqV-8dlIC",
+    "The Black Prism",
+    "In a world where magic is tightly controlled, the most powerful man in history must choose between his kingdom and his son - in the first book of the New York Times bestselling Lightbringer series, one of the most popular fantasy epics of the decade. EVERY LIGHT CASTS A SHADOW. Guile is the Prism, the most powerful man in the world. He is high priest and emperor, a man whose power, wit, and charm are all that preserves a tenuous peace. Yet Prisms never last, and Guile knows exactly how long he has left to live. When Guile discovers he has a son, born in a far kingdom after the war that put him in power, he must decide how much he's willing to pay to protect a secret that could tear his world apart. With over four million copies sold, Brent Weeks is one of the fastest-selling fantasy authors of all time. 'Brent Weeks is so good it's beginning to tick me off' Peter V. Brett 'Weeks has a style of immediacy and detail that pulls the reader relentlessly into the story. He doesn't allow you to look away' Robin Hobb 'I was mesmerised from start to finish. Unforgettable characters, a plot that kept me guessing, non-stop action and the kind of in-depth storytelling that makes me admire a writers' work' Terry Brooks 'Weeks has truly cemented his place among the great epic fantasy writers of our time' British Fantasy Society Books by Brent Weeks Night Angel The Way of Shadows Shadow's Edge Beyond the Shadows Perfect Shadow (novella) Lightbringer The Black Prism The Blinding Knife The Broken Eye The Blood Mirror The Burning White",
+  480
   )
 
   private val updatedMockDataModel: DataModel = DataModel(
-    mockDataModel.id,
+    mockDataModel._id,
     "update name",
     "update description",
     100
   )
   private val editedMockDataModel: DataModel = DataModel(
-    mockDataModel.id,
+    mockDataModel._id,
     "Mock Book",
     "this is the edited description",
     100
   )
   private val updateField: UpdateField = UpdateField(
-    mockDataModel.id,
+    mockDataModel._id,
     "description",
     "this is the edited description"
   )
@@ -223,8 +223,8 @@ class ApplicationControllerSpec extends BaseSpecWithApplication with MockFactory
   "ApplicationController .getGoogleBook()" should {
 
     "find a book in the database by using a search and term" in {
-      val request: FakeRequest[AnyContentAsEmpty.type] = buildGet("/library/google/0345272587/rings")
-      val result = integrationTestApplicationController.getGoogleBook("0345272587", "rings")(request)
+      val request: FakeRequest[AnyContentAsEmpty.type] = buildGet("/library/google/0316087548/prism")
+      val result = integrationTestApplicationController.getGoogleBook("0316087548", "prism")(request)
 
       status(result) shouldBe Status.OK
       contentAsJson(result) shouldBe Json.toJson(googleBookExample)
