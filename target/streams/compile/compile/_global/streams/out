@@ -1,4 +1,26 @@
-[0m[[0m[31merror[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/app/repositories/DataRepository.scala:39:3: ')' expected but 'with' found.[0m
-[0m[[0m[31merror[0m] [0m[0m) with DataRepositoryTrait {[0m
-[0m[[0m[31merror[0m] [0m[0m  ^[0m
-[0m[[0m[31merror[0m] [0m[0mone error found[0m
+[0m[[0m[33mwarn[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/app/controllers/ApplicationController.scala:29:24: non-variable type argument models.DataModel in type pattern Seq[models.DataModel] (the underlying of Seq[models.DataModel]) is unchecked since it is eliminated by erasure[0m
+[0m[[0m[33mwarn[0m] [0m[0m      case Right(book: Seq[DataModel]) => Ok(Json.toJson(book))[0m
+[0m[[0m[33mwarn[0m] [0m[0m                       ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/conf/routes:7:1: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method index,[0m
+[0m[[0m[33mwarn[0m] [0m[0mor remove the empty argument list from its definition (Java-defined methods are exempt).[0m
+[0m[[0m[33mwarn[0m] [0m[0mIn Scala 3, an unapplied method like this will be eta-expanded into a function.[0m
+[0m[[0m[33mwarn[0m] [0m[0mGET     /api                        controllers.ApplicationController.index[0m
+[0m[[0m[33mwarn[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/conf/routes:11:1: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method create,[0m
+[0m[[0m[33mwarn[0m] [0m[0mor remove the empty argument list from its definition (Java-defined methods are exempt).[0m
+[0m[[0m[33mwarn[0m] [0m[0mIn Scala 3, an unapplied method like this will be eta-expanded into a function.[0m
+[0m[[0m[33mwarn[0m] [0m[0mPOST    /api                        controllers.ApplicationController.create[0m
+[0m[[0m[33mwarn[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/conf/routes:7:1: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method index,[0m
+[0m[[0m[33mwarn[0m] [0m[0mor remove the empty argument list from its definition (Java-defined methods are exempt).[0m
+[0m[[0m[33mwarn[0m] [0m[0mIn Scala 3, an unapplied method like this will be eta-expanded into a function.[0m
+[0m[[0m[33mwarn[0m] [0m[0mGET     /api                        controllers.ApplicationController.index[0m
+[0m[[0m[33mwarn[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/conf/routes:11:1: Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method create,[0m
+[0m[[0m[33mwarn[0m] [0m[0mor remove the empty argument list from its definition (Java-defined methods are exempt).[0m
+[0m[[0m[33mwarn[0m] [0m[0mIn Scala 3, an unapplied method like this will be eta-expanded into a function.[0m
+[0m[[0m[33mwarn[0m] [0m[0mPOST    /api                        controllers.ApplicationController.create[0m
+[0m[[0m[33mwarn[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/app/services/ApplicationService.scala:38:12: patterns after a variable pattern cannot match (SLS 8.1.1)[0m
+[0m[[0m[33mwarn[0m] [0m[0m      case dataModel => Right(Ok(Json.toJson(dataModel)))[0m
+[0m[[0m[33mwarn[0m] [0m[0m           ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/Users/jacob.raffe/Documents/scala-practice/play-framework/play-template/app/services/ApplicationService.scala:39:21: unreachable code due to variable pattern 'dataModel' on line 38[0m
+[0m[[0m[33mwarn[0m] [0m[0m      case _ => Left(BadAPIResponse(400, "Unable to complete request"))[0m
+[0m[[0m[33mwarn[0m] [0m[0m                    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m7 warnings found[0m

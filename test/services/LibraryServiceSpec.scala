@@ -21,12 +21,13 @@ class LibraryServiceSpec extends BaseSpec with MockFactory with ScalaFutures wit
   val mockConnector = mock[LibraryConnector]
   implicit val executionContext: ExecutionContext = app.injector.instanceOf[ExecutionContext]
   val testService = new LibraryService(mockConnector)
+  implicit val formats: OFormat[DataModel] = Json.format[DataModel]
 
   val gameOfThrones: JsValue = Json.obj(
-    "_id" -> "someId",
-    "name" -> "A Game Of Thrones",
+    "id" -> "someId",
+    "title" -> "A Game Of Thrones",
     "description" -> "Good book",
-    "numSales" -> 100
+    "pageCount" -> 100
   )
 
   "getGoogleBook" should {
@@ -37,6 +38,7 @@ class LibraryServiceSpec extends BaseSpec with MockFactory with ScalaFutures wit
         .expects(url, *, *)
         .returning(EitherT.rightT[Future, APIError](gameOfThrones.as[DataModel]))
         .once()
+
       whenReady(testService.getGoogleBook(urlOverride = Some(url), search = "", term = "").value) { result =>
         result shouldBe Right(DataModel("someId", "A Game Of Thrones", "Good book", 100))
       }
@@ -44,7 +46,7 @@ class LibraryServiceSpec extends BaseSpec with MockFactory with ScalaFutures wit
     "return an error" in {
       (mockConnector.get[JsObject](_: String)(_: OFormat[JsObject], _: ExecutionContext))
         .expects(url, *, *)
-        .returning(EitherT.leftT[Future, JsObject](APIError.BadAPIResponse(500, "Could not connect")))
+        .returning(EitherT.leftT[Future, DataModel](APIError.BadAPIResponse(500, "Could not connect")))
         .once()
       whenReady(testService.getGoogleBook(urlOverride = Some(url), search = "", term = "").value) { result =>
         result shouldBe Left(APIError.BadAPIResponse(500, "Could not connect"))

@@ -39,27 +39,33 @@ class ApplicationControllerSpec extends BaseSpecWithApplication with MockFactory
     "This is a data model book for testing",
     100
   )
-  private val mockJsonBook: JsValue = Json.obj(
-    "_id" -> "1",
-    "name" -> "Mock Book",
-    "description" -> "This is a data model book for testing",
-    "numSales" -> 100
+//  private val mockJsonBook: JsValue = Json.obj(
+//    "_id" -> "1",
+//    "name" -> "Mock Book",
+//    "description" -> "This is a data model book for testing",
+//    "numSales" -> 100
+//  )
+  private val googleBookExample: DataModel = DataModel(
+    "ILsWC2CLZLwC",
+    "The Fellowship of the Ring",
+    "Frodo Baggins, bearer of the Ring of Power that would enable the evil Sauron to destroy all that is good in Middle-earth, takes on the task of carrying the Ring to Mount Doom to oversee its destruction. A new cover features artwork from the upcoming film adaptation of \"The Lord of the Rings: The Fellowship of the Ring, \" starring Elijah Wood, Sir Ian McKellen, Cate Blanchett, and Liv Tyler, scheduled for release in December. Copyright © Libri GmbH. All rights reserved.",
+    527
   )
 
   private val updatedMockDataModel: DataModel = DataModel(
-    mockDataModel._id,
+    mockDataModel.id,
     "update name",
     "update description",
     100
   )
   private val editedMockDataModel: DataModel = DataModel(
-    mockDataModel._id,
+    mockDataModel.id,
     "Mock Book",
     "this is the edited description",
     100
   )
   private val updateField: UpdateField = UpdateField(
-    mockDataModel._id,
+    mockDataModel.id,
     "description",
     "this is the edited description"
   )
@@ -91,7 +97,7 @@ class ApplicationControllerSpec extends BaseSpecWithApplication with MockFactory
 
   // ReadID good
   "ApplicationController .readId(id: String)" should {
-
+  beforeEach()
     "find a book in the database by id" in {
       val request: FakeRequest[JsValue] = buildPost("/api").withBody[JsValue](Json.toJson(mockDataModel))
       integrationTestApplicationController.create()(request)
@@ -211,6 +217,26 @@ class ApplicationControllerSpec extends BaseSpecWithApplication with MockFactory
       val deleteWrongIdResult: Future[Result] = integrationTestApplicationController.delete("5")(deleteWrongIdRequest)
       status(deleteWrongIdResult)(defaultAwaitTimeout) shouldBe Status.INTERNAL_SERVER_ERROR
       contentAsJson(deleteWrongIdResult)(defaultAwaitTimeout) shouldBe Json.toJson("Bad response from upstream; Status: 400, Reason: Unable to delete book of ID: 5")
+    }
+  }
+
+  "ApplicationController .getGoogleBook()" should {
+
+    "find a book in the database by using a search and term" in {
+      val request: FakeRequest[AnyContentAsEmpty.type] = buildGet("/library/google/0345272587/rings")
+      val result = integrationTestApplicationController.getGoogleBook("0345272587", "rings")(request)
+
+      status(result) shouldBe Status.OK
+      contentAsJson(result) shouldBe Json.toJson(googleBookExample)
+    }
+
+    "return a Bad Request if unable to find a book in the database by using a search and term" in {
+      val badRequest: FakeRequest[AnyContentAsEmpty.type] = buildGet("/library/google/9999999999/rings")
+      val badResult= integrationTestApplicationController.getGoogleBook("9999999999", "rings")(badRequest)
+
+
+      status(badResult) shouldBe Status.INTERNAL_SERVER_ERROR
+      contentAsJson(badResult) shouldBe Json.toJson("Bad response from upstream; Status: 400, Reason: Could not find book")
     }
   }
 

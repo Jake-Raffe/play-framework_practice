@@ -40,19 +40,19 @@ class ApplicationControllerUnitSpec extends BaseSpecWithApplication with MockFac
   )
 
   private val updatedMockDataModel: DataModel = DataModel(
-    mockDataModel._id,
+    mockDataModel.id,
     "update name",
     "update description",
     100
   )
   private val editedMockDataModel: DataModel = DataModel(
-    mockDataModel._id,
+    mockDataModel.id,
     "Mock Book",
     "this is the edited description",
     100
   )
   private val updateField: UpdateField = UpdateField(
-    mockDataModel._id,
+    mockDataModel.id,
     "description",
     "this is the edited description"
   )

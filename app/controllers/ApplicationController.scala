@@ -26,7 +26,7 @@ class ApplicationController @Inject()(val controllerComponents: ControllerCompon
 
   def index(): Action[AnyContent] = Action.async { implicit request =>
     applicationService.index().map{
-      case Right(book: Seq[JsValue]) => Ok(Json.toJson(book))
+      case Right(book: Seq[DataModel]) => Ok(Json.toJson(book))
       case Left(error) => Status(error.httpResponseStatus)(Json.toJson(error.reason))
     }
   }
@@ -81,7 +81,7 @@ class ApplicationController @Inject()(val controllerComponents: ControllerCompon
 
   def getGoogleBook(search: String, term: String): Action[AnyContent] = Action.async { implicit request =>
     libraryService.getGoogleBook(search = search, term = term).value.map {
-      case Right(book) => Ok(Json.toJson(book))
+      case Right(value) => Ok(Json.toJson(value))
       case Left(error) => Status(error.httpResponseStatus)(Json.toJson(error.reason))
     }
   }

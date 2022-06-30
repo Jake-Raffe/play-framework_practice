@@ -34,7 +34,7 @@ class DataRepository @Inject()(mongoComponent: MongoComponent)(implicit ec: Exec
   mongoComponent = mongoComponent,
   domainFormat = DataModel.formats,
   indexes = Seq(IndexModel(
-    Indexes.ascending("_id")))
+    Indexes.ascending("id")))
   ) with DataRepositoryTrait {
 
   val emptyData = new DataModel("empty", "", "", 0)
